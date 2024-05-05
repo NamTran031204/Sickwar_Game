@@ -10,6 +10,7 @@ public class Animation {
     int curIndex;
     double delayTime;
     double beginTime=0;
+    boolean repeated;
     ArrayList<BufferedImage> frameImage;
     public Animation(){
         
@@ -20,7 +21,12 @@ public Animation(ArrayList<BufferedImage> T,double delayTime,String name){
     this.delayTime=delayTime;
     this.name=name;
 }
+public boolean isLastFrame(){
+    if (curIndex==frameImage.size()-1) return true;
+    else return false;
+}
 public void update(long curTime){
+    if(repeated==true){
     if(beginTime==0) beginTime=curTime;
     else
     {
@@ -29,6 +35,21 @@ public void update(long curTime){
             beginTime=curTime;
         }
         
+    }}
+    else{
+        if(beginTime==0) beginTime=curTime;
+    else
+    {
+        if(curTime-beginTime>=delayTime) {
+            if(curIndex<frameImage.size()){
+            curIndex=curIndex+1;
+            beginTime=curTime;}
+            else {
+                beginTime=curTime;
+            }
+        }
+        
+    }
     }
 }
 public void draw(double x, double y,Graphics2D g2){
