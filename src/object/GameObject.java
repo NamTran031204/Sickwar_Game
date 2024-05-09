@@ -1,12 +1,11 @@
 package object;
 
 import state.GameWorld;
-import java.awt.image.BufferedImage;
 public abstract class GameObject {
 
     private float posX;
     private float posY;
-    BufferedImage image;
+    //BufferedImage image;
     private GameWorld gameWorld;
     
     public GameObject(float x, float y ,GameWorld gameWorld) {

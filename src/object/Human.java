@@ -1,16 +1,13 @@
 package object;
 
-import effect.Animation;
 import state.GameWorld;
 
 public abstract class Human extends ParticularObject{
     public static final  int MOVING=0;
     public static final int ATTACKING=1;
-
+    public static final int PAUSE=2;
     private int action=MOVING;
-    public Animation move;
-    public Animation attack;
-    public Animation pause;
+ 
     private int cost;
 
     public Human(float x, float y, float width, float height, int blood, int team,int damage,int cost,GameWorld gameWorld) {
@@ -23,25 +20,84 @@ public abstract class Human extends ParticularObject{
     @Override
     public void Update() {
         super.Update();
-       switch (getGameWorld().mode) {
-            case GameWorld.ATTACK:
-            for(int i=0;i<getGameWorld().particularObjectManager.particularObjects.size();i++){
-                if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null);
-                
-
+        if(getState()==ALIVE){
+        if(action==ATTACKING){
+            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
+            action=ATTACKING;
             }
-                break;
-        
-            case GameWorld.DEFEND:
-                
-                break;
-            case GameWorld.FINAL:
+            else {
+                action=MOVING;
+            }
         }
+           
+            
+        
+        if(action == MOVING){
+            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
+                action=ATTACKING;
+                }
+            else {
+                if(getTeamType()==TEAM1){
+                if(getGameWorld().state==GameWorld.ATTACK)   {
+                
+                    setDirection(RIGHT_DIR);
+                    if(getPosX()+getSpeedX()*getDirection()<=1000){
+                        setPosX(getPosX()+getSpeedX()*getDirection());
+                        action=MOVING;
+                    }
+                    else{
+                        action=PAUSE;
+                        
+                    }
+                }
+            
+                else if(getGameWorld().state==GameWorld.DEFEND){
+                
+                    setDirection(LEFT_DIR);
+                    if(getPosX()+getSpeedX()*getDirection()>=200){
+                    setPosX(getPosX()+getSpeedX()*getDirection());
+                        action=MOVING;
+                    }
+                    else{
+
+                        action=PAUSE;
+                    }
+                }
+                }
+                if(getTeamType()==TEAM2){
+                    if(getPosX()+getSpeedX()*getDirection()>=0){
+                        setPosX(getPosX()+getSpeedX()*getDirection());
+                    }
+                    else 
+                    setPosX(0);
+                }
+            
+        }
+        }
+        if(action==PAUSE){
+            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
+                action=ATTACKING;
+                }
+                if(getTeamType()==TEAM1){
+            if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<=1000){
+                action=MOVING;
+            }
+            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>=200){
+                action=MOVING;
+            }
+                }
+    }
+    }
     }
 
-    public abstract void run();
+    /*public void run(){
+        
 
-    public abstract void stopRun();
+    }
+
+    public void stopRun(){
+
+    }*/
 
     public int getAction() {
         return this.action;

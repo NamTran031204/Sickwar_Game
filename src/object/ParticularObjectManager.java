@@ -41,7 +41,7 @@ public class ParticularObjectManager {
                 ParticularObject object = particularObjects.get(id);
                 if(object == particularObject)
                     particularObjects.remove(id);
-
+                
             }
         }
     }

@@ -2,14 +2,11 @@ package main;
 
 
 import javax.swing.JPanel;
-
 import state.GameWorld;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.io.IOException;
 
 
 public class GamePanel extends JPanel implements Runnable {
@@ -17,18 +14,14 @@ public class GamePanel extends JPanel implements Runnable {
     final public int SCREEN_WIDTH_MAX=screenSize.width;
     final public int SCREEN_HEIGHT_MAX=screenSize.height;
     Thread thread;
-    //public BufferedImage bufImage,bg;
     public Graphics2D g2;
     public boolean isRunning=true;
     GameWorld gameWorld;
 
 
-    public GamePanel() throws IOException {
+    public GamePanel()  {
         this.setPreferredSize(new Dimension(500,500));
-        //this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-        //bufImage = new BufferedImage(SCREEN_WIDTH_MAX, SCREEN_HEIGHT_MAX, BufferedImage.TYPE_INT_ARGB);
-        //bg= ImageIO.read(new File("src/resource/8817533.jpg"));
         gameWorld=new GameWorld(this);
     }
     public void startGame(){

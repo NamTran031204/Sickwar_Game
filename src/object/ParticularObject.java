@@ -11,11 +11,11 @@ public abstract class ParticularObject extends GameObject {
     public static final int TEAM1 = 0;
     public static final int TEAM2 = 1;
 
-    public static final int LEFT_DIR = 0;
+    public static final int LEFT_DIR = -1;
     public static final int RIGHT_DIR = 1;
 
     public static final int ALIVE = 0;
-   // public static final int BEHURT = 1;
+    public static final int BEHURT = 1;
     public static final int DEATH = 2;
 
     private int state = ALIVE;
@@ -32,7 +32,6 @@ public abstract class ParticularObject extends GameObject {
 
     private int teamType;
 
-    private long t=0;
     public ParticularObject(float x , float y, float width , float height , int blood,int team,int damage ,GameWorld gameWorld ) {
         
         super(x,y,gameWorld);
@@ -60,13 +59,18 @@ public abstract class ParticularObject extends GameObject {
                     if(object.getDamage() > 0) {
 
                         beHurt(object.getDamage());
-                        
+                        if(this.getBlood()==0) state = BEHURT;
                     }
+
                 }
 
                 break;
-            case DEATH:
+            case BEHURT:
                 die.update(System.nanoTime());
+                if(die.isLastFrame()==true) state = DEATH;
+                break;
+            case DEATH:
+                
                // state = DEATH;
 
                 break;
@@ -76,6 +80,7 @@ public abstract class ParticularObject extends GameObject {
 
         if(getBlood()-dameEat<=0) {
             setBlood(0);
+
         }
         else {
         setBlood(getBlood()-dameEat);
