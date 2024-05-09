@@ -22,7 +22,7 @@ public class Loader {
         return instance;
     }
     public Hashtable<String,Animation> loadAllAnimation(){
-        File file = new File("Stickwar_Game/src/resource/Data/frame");
+        File file = new File("src/resource/Data/frame");
         Hashtable<String,Animation> allAnimation= new Hashtable<String,Animation>();
     
         BufferedImage image=null;
@@ -35,6 +35,7 @@ public class Loader {
                     ArrayList<BufferedImage> T= new ArrayList<BufferedImage>();
                     while((l=reader.readLine()).equals(""));// dong trong thi k lgi
                     animation.name=l; // load ten
+                    animation.repeated=Boolean.parseBoolean(reader.readLine());
                     animation.delayTime=Integer.parseInt(reader.readLine());//load delayTime
                     
                     while((l=reader.readLine())!=null&&!l.equals("")){ // tao arraylist frameImage

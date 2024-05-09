@@ -1,6 +1,6 @@
-package gameobject;
+package object;
 
-import state.GameWorldState;
+import state.GameWorld;
 
 import java.awt.Graphics2D;
 import java.util.Collections;
@@ -11,16 +11,16 @@ public class ParticularObjectManager {
 
     protected List<ParticularObject> particularObjects;
 
-    private GameWorldState gameWorld;
+    private GameWorld gameWorld;
     
-    public ParticularObjectManager(GameWorldState gameWorld){
+    public ParticularObjectManager(GameWorld gameWorld){
         
         particularObjects = Collections.synchronizedList(new LinkedList<ParticularObject>());
         this.gameWorld = gameWorld;
         
     }
     
-    public GameWorldState getGameWorld(){
+    public GameWorld getGameWorld(){
         return gameWorld;
     }
     

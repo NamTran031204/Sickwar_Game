@@ -1,15 +1,15 @@
-package gameobject;
+package object;
 
-import state.GameWorldState;
-
+import state.GameWorld;
+import java.awt.image.BufferedImage;
 public abstract class GameObject {
 
     private float posX;
     private float posY;
-
-    private GameWorldState gameWorld;
+    BufferedImage image;
+    private GameWorld gameWorld;
     
-    public GameObject(float x, float y ,GameWorldState gameWorld) {
+    public GameObject(float x, float y ,GameWorld gameWorld) {
         posX = x;
         posY = y;
         this.gameWorld = gameWorld;
@@ -27,7 +27,7 @@ public abstract class GameObject {
         this.posY = posY;
     }
 
-    public GameWorldState getGameWorld() {
+    public GameWorld getGameWorld() {
         return gameWorld;
     }
 
