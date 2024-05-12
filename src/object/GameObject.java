@@ -1,4 +1,4 @@
-package gameobject;
+package object;
 
 import state.GameWorldState;
 
