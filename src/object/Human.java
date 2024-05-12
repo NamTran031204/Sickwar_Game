@@ -90,15 +90,6 @@ public abstract class Human extends ParticularObject{
     }
     }
 
-    /*public void run(){
-        
-
-    }
-
-    public void stopRun(){
-
-    }*/
-
     public int getAction() {
         return this.action;
     }

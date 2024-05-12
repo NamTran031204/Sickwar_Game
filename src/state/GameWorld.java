@@ -7,20 +7,23 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import main.GamePanel;
+import main.gamePanel;
 import object.ParticularObjectManager;
 
 
 public class GameWorld {
     public final static int ATTACK=0;
     public final static int DEFEND=1;
-    //public final static int FINAL=2;
+    public final static int WIN=2;
+    public final static int GAMEOVER=3;
+    
 
     public int state=DEFEND;
     public BufferedImage bg,bufImage;
-    public GamePanel gamePanel;
+    public gamePanel gamePanel;
     public ParticularObjectManager particularObjectManager;
-    public GameWorld(GamePanel gamePanel){
+
+    public GameWorld(gamePanel gamePanel){
         try {
             bg= ImageIO.read(new File("src/resource/background.png"));
         } catch (IOException e) {
@@ -31,6 +34,7 @@ public class GameWorld {
         this.gamePanel= gamePanel;
         
     }
+    
    public void Update(){
 
    }  
@@ -44,8 +48,9 @@ public class GameWorld {
         g2= (Graphics2D)bufImage.getGraphics();
     if(g2!=null){
         g2.drawImage(bg,0,0 ,  gamePanel.SCREEN_WIDTH_MAX , gamePanel.SCREEN_HEIGHT_MAX, gamePanel);
-   
+        
+    }
+    }
     }
     
-    }}
 }
