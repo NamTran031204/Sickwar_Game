@@ -60,7 +60,7 @@ public class ParticularObjectManager {
         }
         return null;
     }
-    
+
     public void UpdateObjects(){
         
         synchronized(particularObjects){

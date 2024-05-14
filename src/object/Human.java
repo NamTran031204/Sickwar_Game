@@ -1,5 +1,7 @@
 package object;
 
+import java.awt.geom.Point2D;
+
 import state.GameWorld;
 
 public abstract class Human extends ParticularObject{
@@ -9,11 +11,12 @@ public abstract class Human extends ParticularObject{
     private int action=MOVING;
  
     private int cost;
-
+    public float addressX;
     public Human(float x, float y, float width, float height, int blood, int team,int damage,int cost,GameWorld gameWorld) {
         super(x, y, width, height, blood,team,damage, gameWorld);
         setCost(cost);
         setState(ALIVE);
+        
     }
 
 
@@ -41,11 +44,12 @@ public abstract class Human extends ParticularObject{
                 if(getGameWorld().state==GameWorld.ATTACK)   {
                 
                     setDirection(RIGHT_DIR);
-                    if(getPosX()+getSpeedX()*getDirection()<=1000){
+                    if(getPosX()+getSpeedX()*getDirection()<=addressX+800){
                         setPosX(getPosX()+getSpeedX()*getDirection());
                         action=MOVING;
                     }
                     else{
+                        setPosX(addressX+800);
                         action=PAUSE;
                         
                     }
@@ -54,12 +58,12 @@ public abstract class Human extends ParticularObject{
                 else if(getGameWorld().state==GameWorld.DEFEND){
                 
                     setDirection(LEFT_DIR);
-                    if(getPosX()+getSpeedX()*getDirection()>=200){
+                    if(getPosX()+getSpeedX()*getDirection()>=addressX){
                     setPosX(getPosX()+getSpeedX()*getDirection());
                         action=MOVING;
                     }
                     else{
-
+                        setPosX(addressX);
                         action=PAUSE;
                     }
                 }
@@ -79,10 +83,10 @@ public abstract class Human extends ParticularObject{
                 action=ATTACKING;
                 }
                 if(getTeamType()==TEAM1){
-            if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<=1000){
+            if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<=addressX+800){
                 action=MOVING;
             }
-            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>=200){
+            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>=addressX){
                 action=MOVING;
             }
                 }

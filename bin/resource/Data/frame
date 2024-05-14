@@ -1,8 +1,8 @@
-2
+3
 
 GiantMove
 true
-1000000000/60
+16666666.6
 src/resource/giant/move/Giantmove_1.png
 src/resource/giant/move/Giantmove_2.png
 src/resource/giant/move/Giantmove_3.png
@@ -11,13 +11,18 @@ src/resource/giant/move/Giantmove_5.png
 src/resource/giant/move/Giantmove_6.png
 
 GiantPause
-false
-1000000000/60
-src/resource/giant/move/Giantmove_7.png
+true
+16666666.6
+src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_6.png
 
 GiantAttack
 true
-1000000000/60
+16666666.6
 src/resource/giant/attack/giantAttack1.png
 src/resource/giant/attack/giantAttack2.png
 src/resource/giant/attack/giantAttack3.png

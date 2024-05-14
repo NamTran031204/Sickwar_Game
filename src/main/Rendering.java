@@ -17,7 +17,6 @@ public class Rendering {
 		
 		
 	}
-	
 	public void render(Graphics g) {
 		switch(gameStatus.gs) {
 			case MENU:

@@ -21,6 +21,15 @@ public Animation(ArrayList<BufferedImage> T,double delayTime,String name){
     this.delayTime=delayTime;
     this.name=name;
 }
+public Animation(Animation animation){
+        delayTime=animation.delayTime;
+        repeated = animation.repeated;
+        curIndex=0;
+        frameImage = new ArrayList<BufferedImage>();
+        for(BufferedImage f : animation.frameImage){
+            frameImage.add(f);
+        }
+}
 public boolean isLastFrame(){
     if (curIndex==frameImage.size()-1) return true;
     else return false;

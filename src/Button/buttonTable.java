@@ -9,6 +9,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import state.GameWorld;
+
 public class buttonTable {
 	private int x, y ,width, height;
 	button archer;
@@ -65,7 +67,7 @@ public class buttonTable {
 	}
 
 	public void mouseMoved(int x, int y) {
-		archer.setMouseOver(true);
+		archer.setMouseOver(false);
 		if(archer.getOutline().contains(x, y)) {
 			archer.setMouseOver(true);
 		}

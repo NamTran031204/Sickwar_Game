@@ -14,19 +14,18 @@ public class Giant extends Human {
     public Animation pause;
     public Animation attackBack;
     public Animation curAnimation;
-    public Loader load;
     // can animation die ke thua
     public Giant(float x, float y,int team,GameWorld gameWorld) {
         super(x,y,150,400,3000,team,300,1500,gameWorld); 
-        setTeamType(team);
-        move = Loader.getInstanceLoader().loadAllAnimation().get("GiantMove");
-        moveBack = Loader.getInstanceLoader().loadAllAnimation().get("GiantMove");
+        move = Loader.getInstanceLoader().getAnimation("GiantMove");
+        moveBack = Loader.getInstanceLoader().getAnimation("GiantMove");
         moveBack.flipAll();
-        pause= Loader.getInstanceLoader().loadAllAnimation().get("GiantPause");
-        attackBack=Loader.getInstanceLoader().loadAllAnimation().get("GiantAttack");
-        attack=Loader.getInstanceLoader().loadAllAnimation().get("GiantAttack");
+        pause= Loader.getInstanceLoader().getAnimation("GiantPause");
+        die=Loader.getInstanceLoader().getAnimation("GiantPause");
+        attackBack=Loader.getInstanceLoader().getAnimation("GiantAttack");
+        attack=Loader.getInstanceLoader().getAnimation("GiantAttack");
         attack.flipAll();
-        setSpeedX(1);
+        setSpeedX(0.000015f);
         setSpeedY(0);
         if(getTeamType()==TEAM1) curAnimation=move;
         else curAnimation=moveBack;
@@ -34,6 +33,7 @@ public class Giant extends Human {
 
     
     public void draw(Graphics2D g2){
+        
         curAnimation.draw(getPosX(), getPosY(), g2);
     }
 

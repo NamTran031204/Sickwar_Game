@@ -8,8 +8,8 @@ import effect.Animation;
 
 public abstract class ParticularObject extends GameObject {
 
-    public static final int TEAM1 = 0;
-    public static final int TEAM2 = 1;
+    public static final int TEAM1 = 1;
+    public static final int TEAM2 = 2;
 
     public static final int LEFT_DIR = -1;
     public static final int RIGHT_DIR = 1;
@@ -27,7 +27,7 @@ public abstract class ParticularObject extends GameObject {
     private int blood;
     
     private int damage;
-    private Animation die;
+    public Animation die;
     private int direction;
 
     private int teamType;
@@ -38,7 +38,8 @@ public abstract class ParticularObject extends GameObject {
         setBlood(blood);
         setWidth(width);
         setHeight(height);
-        setDamage(damage);
+        setDamage(damage);  
+        setTeamType(team);
         if(teamType==TEAM1){
         direction = RIGHT_DIR;    
         }
