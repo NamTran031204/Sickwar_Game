@@ -19,7 +19,7 @@ public class Giant extends Human {
     public Animation curAnimation;
     // can animation die ke thua
     public Giant(float x, float y,int team,GameWorld gameWorld) {
-        super(x,y,150,400,3000,team,4,1500,gameWorld); 
+        super(x,y,150,400,3000,team,5,1500,gameWorld); 
         move = Loader.getInstanceLoader().getAnimation("GiantMove");
         moveBack = Loader.getInstanceLoader().getAnimation("GiantMove");
         moveBack.flipAll();

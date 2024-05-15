@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import Input.mouseListener;
 
-public class gamePanel extends JPanel{
+public class GamePanel extends JPanel{
 	
 	Random random;
 	Window wd;
@@ -27,7 +27,7 @@ public class gamePanel extends JPanel{
 	public final int Window_Width = 1080;
 
 	
-	public gamePanel(Window wd) {
+	public GamePanel(Window wd) {
 		this.wd = wd;
 		
 		setWindowSize();

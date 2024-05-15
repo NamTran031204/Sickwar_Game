@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import Button.button;
 import Button.buttonTable;
 import main.Window;
-import main.gamePanel;
+import main.GamePanel;
 import object.Giant;
 import state.GameWorld;
 

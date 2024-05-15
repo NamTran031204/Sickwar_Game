@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 
 import Scene.Playing;
 import Scene.gameScene;
-import main.gamePanel;
+import main.GamePanel;
 import object.Giant;
 import object.ParticularObject;
 import object.ParticularObjectManager;

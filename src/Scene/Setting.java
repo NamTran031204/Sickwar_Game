@@ -8,7 +8,7 @@ import java.awt.Graphics;
 
 import Button.button;
 import main.Window;
-import main.gamePanel;
+import main.GamePanel;
 import static main.gameStatus.*;
 
 public class Setting extends gameScene implements screenMethod{

@@ -27,7 +27,7 @@ public class Window extends JFrame implements Runnable{
 	Menu menu;
 	Playing playing;
 	Setting setting;
-	gamePanel gp;
+	GamePanel gp;
 	
 	public Window() {
 		
@@ -45,7 +45,7 @@ public class Window extends JFrame implements Runnable{
 	
 	private void initClasses() {
 		render = new Rendering(this);
-		gp = new gamePanel(this);
+		gp = new GamePanel(this);
 		menu = new Menu(this);
 		playing = new Playing(this);
 		setting = new Setting(this);
