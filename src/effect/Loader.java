@@ -22,7 +22,7 @@ public class Loader {
         return instance;
     }
     public Hashtable<String,Animation> loadAllAnimation(){
-        File file = new File("Sickwar_Game/src/resource/Data/frame");
+        File file = new File("src/resource/Data/frame");
         allAnimation= new Hashtable<String,Animation>();
     
         BufferedImage image=null;

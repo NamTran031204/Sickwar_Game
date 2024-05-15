@@ -40,7 +40,7 @@ public class GameWorld {
     
     public GameWorld(Playing playing){
         try {
-            bg= ImageIO.read(new File("Sickwar_Game/src/resource/background.png"));
+            bg= ImageIO.read(new File("src/resource/background.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

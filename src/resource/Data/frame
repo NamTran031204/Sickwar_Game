@@ -3,27 +3,27 @@
 GiantMove
 true
 166666666
-Sickwar_Game/src/resource/giant/move/Giantmove_1.png
-Sickwar_Game/src/resource/giant/move/Giantmove_2.png
-Sickwar_Game/src/resource/giant/move/Giantmove_3.png
-Sickwar_Game/src/resource/giant/move/Giantmove_4.png
-Sickwar_Game/src/resource/giant/move/Giantmove_5.png
-Sickwar_Game/src/resource/giant/move/Giantmove_6.png
+src/resource/giant/move/Giantmove_1.png
+src/resource/giant/move/Giantmove_2.png
+src/resource/giant/move/Giantmove_3.png
+src/resource/giant/move/Giantmove_4.png
+src/resource/giant/move/Giantmove_5.png
+src/resource/giant/move/Giantmove_6.png
 
 
 GiantPause
 true
 166666666
-Sickwar_Game/src/resource/giant/move/Giantmove_2.png
-Sickwar_Game/src/resource/giant/move/Giantmove_3.png
-Sickwar_Game/src/resource/giant/move/Giantmove_4.png
+src/resource/giant/move/Giantmove_2.png
+src/resource/giant/move/Giantmove_3.png
+src/resource/giant/move/Giantmove_4.png
 
 GiantAttack
 true
 199999999
-Sickwar_Game/src/resource/giant/attack/giantAttack1.png
-Sickwar_Game/src/resource/giant/attack/giantAttack2.png
-Sickwar_Game/src/resource/giant/attack/giantAttack3.png
-Sickwar_Game/src/resource/giant/attack/giantAttack4.png
-Sickwar_Game/src/resource/giant/attack/giantAttack5.png
-Sickwar_Game/src/resource/giant/attack/giantAttack6.png
+src/resource/giant/attack/giantAttack1.png
+src/resource/giant/attack/giantAttack2.png
+src/resource/giant/attack/giantAttack3.png
+src/resource/giant/attack/giantAttack4.png
+src/resource/giant/attack/giantAttack5.png
+src/resource/giant/attack/giantAttack6.png
