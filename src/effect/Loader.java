@@ -8,8 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Scanner;
-
 import javax.imageio.ImageIO;
 
 public class Loader {

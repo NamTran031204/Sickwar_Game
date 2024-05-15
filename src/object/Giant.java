@@ -3,6 +3,9 @@ package object;
 import state.GameWorld;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
+import javax.sound.midi.Receiver;
+
 import effect.Animation;
 import effect.Loader;
 
@@ -16,7 +19,7 @@ public class Giant extends Human {
     public Animation curAnimation;
     // can animation die ke thua
     public Giant(float x, float y,int team,GameWorld gameWorld) {
-        super(x,y,150,400,3000,team,300,1500,gameWorld); 
+        super(x,y,150,400,3000,team,4,1500,gameWorld); 
         move = Loader.getInstanceLoader().getAnimation("GiantMove");
         moveBack = Loader.getInstanceLoader().getAnimation("GiantMove");
         moveBack.flipAll();
@@ -25,7 +28,7 @@ public class Giant extends Human {
         attackBack=Loader.getInstanceLoader().getAnimation("GiantAttack");
         attack=Loader.getInstanceLoader().getAnimation("GiantAttack");
         attack.flipAll();
-        setSpeedX(0.000015f);
+        setSpeedX(0.5f);
         setSpeedY(0);
         if(getTeamType()==TEAM1) curAnimation=move;
         else curAnimation=moveBack;
@@ -36,16 +39,18 @@ public class Giant extends Human {
         
         curAnimation.draw(getPosX(), getPosY(), g2);
     }
-
-    public void update(){
+   // public void newUpdate(){
+    //    setPosX(getPosX()+getSpeedX());
+    //}
+    public void Update(){
         super.Update();
         if(getAction()==ATTACKING){
-            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
+            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null &&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
              curAnimation=attack;
              attack.update(System.nanoTime());
            
             }
-            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==LEFT_DIR){
+            if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null&&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==LEFT_DIR){
               curAnimation=attackBack;
               attackBack.update(System.nanoTime());
           
@@ -86,7 +91,7 @@ public class Giant extends Human {
 
     @Override
     public Rectangle getBoundForCollisionWithEnemy() {
-        Rectangle rec = new Rectangle((int)getWidth(),(int)getHeight());
+        Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
         return rec;
     }
 

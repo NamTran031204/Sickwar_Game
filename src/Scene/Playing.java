@@ -2,6 +2,7 @@ package Scene;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import Button.button;
 import Button.buttonTable;
 import main.Window;
 import main.gamePanel;
+import object.Giant;
 import state.GameWorld;
 
 import static main.gameStatus.*;
@@ -22,7 +24,6 @@ public class Playing extends gameScene implements screenMethod{
 	button setting;
 	buttonTable buttontable;
 	public GameWorld gameWorld;
-
 	public Playing(Window wd) {
 		super(wd);
 		importImg();
@@ -39,6 +40,7 @@ public class Playing extends gameScene implements screenMethod{
 		g.drawImage(gameWorld.bufImage, 0, 0, wd);
 		drawButton(g);
 		buttontable.draw(g);
+		
 	}
 	
 	

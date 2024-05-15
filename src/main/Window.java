@@ -11,9 +11,7 @@ import Scene.Menu;
 import Scene.Playing;
 import Scene.Setting;
 import effect.Loader;
-import state.GameWorld;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Window extends JFrame implements Runnable{
@@ -30,9 +28,9 @@ public class Window extends JFrame implements Runnable{
 	Playing playing;
 	Setting setting;
 	gamePanel gp;
-	//public GameWorld gameWorld;
+	
 	public Window() {
-		//gameWorld=new GameWorld(this);
+		
 		Loader.getInstanceLoader();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -87,6 +85,7 @@ public class Window extends JFrame implements Runnable{
 			if(now - lastFrame >= timePerFrame) {
 			lastFrame = now;
 			repaint();
+
 			frame++;
 			}
 			

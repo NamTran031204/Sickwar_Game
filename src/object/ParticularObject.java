@@ -60,15 +60,16 @@ public abstract class ParticularObject extends GameObject {
                     if(object.getDamage() > 0) {
 
                         beHurt(object.getDamage());
-                        if(this.getBlood()==0) state = BEHURT;
+                        if(this.getBlood()<=0) state = BEHURT;
                     }
 
                 }
-
                 break;
             case BEHURT:
+            if(die!=null){
                 die.update(System.nanoTime());
                 if(die.isLastFrame()==true) state = DEATH;
+            }
                 break;
             case DEATH:
                 

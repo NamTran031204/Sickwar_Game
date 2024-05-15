@@ -11,15 +11,13 @@ public abstract class Human extends ParticularObject{
     private int action=MOVING;
  
     private int cost;
-    public float addressX;
+    public float addressX=150;
     public Human(float x, float y, float width, float height, int blood, int team,int damage,int cost,GameWorld gameWorld) {
         super(x, y, width, height, blood,team,damage, gameWorld);
         setCost(cost);
         setState(ALIVE);
         
     }
-
-
     @Override
     public void Update() {
         super.Update();
@@ -44,33 +42,49 @@ public abstract class Human extends ParticularObject{
                 if(getGameWorld().state==GameWorld.ATTACK)   {
                 
                     setDirection(RIGHT_DIR);
-                    if(getPosX()+getSpeedX()*getDirection()<=addressX+800){
+                    if(getPosX()+getSpeedX()*getDirection()<addressX+800){
                         setPosX(getPosX()+getSpeedX()*getDirection());
                         action=MOVING;
                     }
                     else{
-                        setPosX(addressX+800);
-                        action=PAUSE;
+                        if(getPosX()+getSpeedX()*getDirection()>addressX+800){
+                            setDirection(LEFT_DIR);
+                            setPosX(getPosX()+getSpeedX()*getDirection());
+                        }
+                        else
+                       { setPosX(addressX+800);
+                        setDirection(RIGHT_DIR);
+                        action=PAUSE;}
+                       
                         
                     }
                 }
             
                 else if(getGameWorld().state==GameWorld.DEFEND){
-                
-                    setDirection(LEFT_DIR);
-                    if(getPosX()+getSpeedX()*getDirection()>=addressX){
+                    if(getPosX()+getSpeedX()*getDirection()>addressX){
                     setPosX(getPosX()+getSpeedX()*getDirection());
+                    setDirection(LEFT_DIR);
                         action=MOVING;
                     }
                     else{
-                        setPosX(addressX);
-                        action=PAUSE;
+                        
+                        if(getPosX()+getSpeedX()*getDirection()<addressX){
+                            setDirection(RIGHT_DIR);
+                        setPosX(getPosX()+getSpeedX()*getDirection());
+                    }
+
+                        else {setPosX(addressX);
+                            setDirection(RIGHT_DIR);
+                            action=PAUSE;
+                        }
+                        
                     }
                 }
                 }
                 if(getTeamType()==TEAM2){
                     if(getPosX()+getSpeedX()*getDirection()>=0){
                         setPosX(getPosX()+getSpeedX()*getDirection());
+                    
                     }
                     else 
                     setPosX(0);
@@ -83,10 +97,10 @@ public abstract class Human extends ParticularObject{
                 action=ATTACKING;
                 }
                 if(getTeamType()==TEAM1){
-            if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<=addressX+800){
+            if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<addressX+800){
                 action=MOVING;
             }
-            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>=addressX){
+            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>addressX){
                 action=MOVING;
             }
                 }
