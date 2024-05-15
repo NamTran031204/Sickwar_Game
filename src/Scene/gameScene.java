@@ -1,7 +1,7 @@
 package Scene;
 
 import main.Window;
-import main.gamePanel;
+import main.GamePanel;
 
 public class gameScene {
 	Window wd;

@@ -1,5 +1,8 @@
 package main;
 
+import static main.gameStatus.PLAYING;
+
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,8 +10,8 @@ import Input.mouseListener;
 import Scene.Menu;
 import Scene.Playing;
 import Scene.Setting;
+import effect.Loader;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Window extends JFrame implements Runnable{
@@ -24,9 +27,11 @@ public class Window extends JFrame implements Runnable{
 	Menu menu;
 	Playing playing;
 	Setting setting;
-	gamePanel gp;
+	GamePanel gp;
+	
 	public Window() {
 		
+		Loader.getInstanceLoader();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		
@@ -40,7 +45,7 @@ public class Window extends JFrame implements Runnable{
 	
 	private void initClasses() {
 		render = new Rendering(this);
-		gp = new gamePanel(this);
+		gp = new GamePanel(this);
 		menu = new Menu(this);
 		playing = new Playing(this);
 		setting = new Setting(this);
@@ -55,7 +60,6 @@ public class Window extends JFrame implements Runnable{
 
 
 	private void updateGame() {
-		//System.out.println("updated");
 	}
 
 	public static void main(String[] args) {
@@ -81,15 +85,16 @@ public class Window extends JFrame implements Runnable{
 			if(now - lastFrame >= timePerFrame) {
 			lastFrame = now;
 			repaint();
+
 			frame++;
 			}
 			
 			if(now - lastUpdate >= timePerUpdate) {
 				updateGame();
-
+				
 			}
 			if(System.currentTimeMillis() - lastTimeCheck >= 1000) {
-				System.out.println("FPS = " + frame);
+				//System.out.println("FPS = " + frame);
 				frame = 0;
 				lastTimeCheck = System.currentTimeMillis();
 			}
@@ -109,5 +114,5 @@ public class Window extends JFrame implements Runnable{
 		return setting;
 	}
 
-
+	
 }

@@ -1,10 +1,8 @@
 package Scene;
 
-import static main.gameStatus.PLAYING;
-import static main.gameStatus.setGameStatus;
-
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,30 +12,35 @@ import javax.imageio.ImageIO;
 import Button.button;
 import Button.buttonTable;
 import main.Window;
-import main.gamePanel;
+import main.GamePanel;
+import object.Giant;
+import state.GameWorld;
+
 import static main.gameStatus.*;
 
 public class Playing extends gameScene implements screenMethod{
-	
 	BufferedImage img;
 	BufferedImage setImg;
 	button setting;
 	buttonTable buttontable;
-
+	public GameWorld gameWorld;
 	public Playing(Window wd) {
 		super(wd);
 		importImg();
 		initButton();
 		buttontable = new buttonTable(1090,0,445,100);
+		gameWorld=new GameWorld(this);
 	}
-
-	
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(img, 0, 0 ,null);
+		//g.drawImage(img, 0, 0,SCREEN_WIDTH_MAX,SCREEN_HEIGHT_MAX ,null);	
+		gameWorld.Update();
+		gameWorld.Render();
+		g.drawImage(gameWorld.bufImage, 0, 0, wd);
 		drawButton(g);
 		buttontable.draw(g);
+		
 	}
 	
 	

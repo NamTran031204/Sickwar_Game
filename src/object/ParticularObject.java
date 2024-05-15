@@ -1,15 +1,17 @@
 package object;
 
-import state.GameWorldState;
+import state.GameWorld;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import effect.Animation;
+
 public abstract class ParticularObject extends GameObject {
 
-    public static final int TEAM1 = 0;
-    public static final int TEAM2 = 1;
+    public static final int TEAM1 = 1;
+    public static final int TEAM2 = 2;
 
-    public static final int LEFT_DIR = 0;
+    public static final int LEFT_DIR = -1;
     public static final int RIGHT_DIR = 1;
 
     public static final int ALIVE = 0;
@@ -25,24 +27,77 @@ public abstract class ParticularObject extends GameObject {
     private int blood;
     
     private int damage;
-    
+    public Animation die;
     private int direction;
 
     private int teamType;
 
-
-    public ParticularObject(float x , float y, float width , float height , int blood, GameWorldState gameWorld ) {
+    public ParticularObject(float x , float y, float width , float height , int blood,int team,int damage ,GameWorld gameWorld ) {
         
         super(x,y,gameWorld);
         setBlood(blood);
         setWidth(width);
         setHeight(height);
-
-        direction = RIGHT_DIR;
+        setDamage(damage);  
+        setTeamType(team);
+        if(teamType==TEAM1){
+        direction = RIGHT_DIR;    
+        }
+        if(teamType==TEAM2){
+            direction=LEFT_DIR;
+        }
+        gameWorld.particularObjectManager.addObject(this);
     }
 
+   @Override
+    public void Update() {
+        
+        switch (state) {
+            case ALIVE:
+                ParticularObject object = getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this);
+                if(object != null) {
 
+                    if(object.getDamage() > 0) {
 
+                        beHurt(object.getDamage());
+                        if(this.getBlood()<=0) state = BEHURT;
+                    }
+
+                }
+                break;
+            case BEHURT:
+            if(die!=null){
+                die.update(System.nanoTime());
+                if(die.isLastFrame()==true) state = DEATH;
+            }
+                break;
+            case DEATH:
+                
+               // state = DEATH;
+
+                break;
+        }
+    } 
+       public void beHurt(int dameEat) {
+
+        if(getBlood()-dameEat<=0) {
+            setBlood(0);
+
+        }
+        else {
+        setBlood(getBlood()-dameEat);
+
+        }
+        //setBlood(getBlood() - dameEat);
+        //if(getBlood()<=0) state = DEATH;
+        //state = BEHURT;
+
+    
+    }
+    public abstract Rectangle getBoundForCollisionWithEnemy();
+
+    public abstract void draw(Graphics2D g2);
+    
     public int getTeamType() {
         return teamType;
     }
@@ -83,13 +138,6 @@ public abstract class ParticularObject extends GameObject {
         this.speedX = speedX;
     }
 
-    public float getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(float speedY) {
-        this.speedY = speedY;
-    }
 
     public int getBlood() {
         return blood;
@@ -114,40 +162,15 @@ public abstract class ParticularObject extends GameObject {
     public void setDirection(int direction) {
         this.direction = direction;
     }
-
-    public void beHurt(int dameEat) {
-
-        setBlood(getBlood() - dameEat);
-        state = BEHURT;
-
-    }
-
-
-    @Override
-    public void Update() {
-        
-        switch (state) {
-            case ALIVE:
-                ParticularObject object = getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this);
-                if(object != null) {
-
-                    if(object.getDamage() > 0) {
-
-                        beHurt(object.getDamage());
-                    }
-                }
-
-                break;
-        
-            case DEATH:
-                state = DEATH;
-
-                break;
-        }
-    }
-
-    public abstract Rectangle getBoundForCollisionWithEnemy();
-
-    public abstract void draw(Graphics2D g2);
     
+
+
+    public float getSpeedY() {
+        return this.speedY;
+    }
+
+    public void setSpeedY(float speedY) {
+        this.speedY = speedY;
+    }
+
 }

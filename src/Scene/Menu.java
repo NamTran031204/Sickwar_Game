@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 
 import Button.button;
 import main.Window;
-import main.gamePanel;
+import main.GamePanel;
 import static main.gameStatus.*;
 
 public class Menu extends gameScene implements screenMethod{
