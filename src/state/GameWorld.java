@@ -51,7 +51,7 @@ public class GameWorld {
     }
     
    public void Update(){
-    initEnemy(System.currentTimeMillis());
+    //initEnemy(System.currentTimeMillis());
     particularObjectManager.UpdateObjects();
    
     

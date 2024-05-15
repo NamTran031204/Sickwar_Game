@@ -19,7 +19,7 @@ src/resource/giant/move/Giantmove_4.png
 
 GiantAttack
 true
-166666666
+199999999
 src/resource/giant/attack/giantAttack1.png
 src/resource/giant/attack/giantAttack2.png
 src/resource/giant/attack/giantAttack3.png

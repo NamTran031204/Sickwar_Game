@@ -39,19 +39,17 @@ public class Giant extends Human {
         
         curAnimation.draw(getPosX(), getPosY(), g2);
     }
-   // public void newUpdate(){
-    //    setPosX(getPosX()+getSpeedX());
-    //}
+
     public void Update(){
         super.Update();
         if(getAction()==ATTACKING){
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null &&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
-             curAnimation=attack;
+             curAnimation=attackBack;
              attack.update(System.nanoTime());
            
             }
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null&&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==LEFT_DIR){
-              curAnimation=attackBack;
+              curAnimation=attack;
               attackBack.update(System.nanoTime());
           
             }
