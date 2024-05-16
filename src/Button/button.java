@@ -32,6 +32,16 @@ public class button {
 		initOutline();
 	}
 	
+	public button(int x, int y, int width, int height, BufferedImage img, String text) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.img = img;
+		this.text = text;
+		initOutline();
+	}
+	
 	private void initOutline() {
 		this.outline = new Rectangle(x, y, width, height);
 	}
@@ -50,7 +60,18 @@ public class button {
 		drawText(g);
 
 	}
+	
+	public void drawPic(Graphics g) {
+		drawBody(g);
+		drawOutline(g);
+		g.drawImage(img, x + 5, y + 5, 60, 60, null);
+		drawPicText(g);
+	}
 
+	private void drawPicText(Graphics g) {
+		g.drawString(text, x + 30 , y + 70);
+		
+	}
 	public void drawOutline(Graphics g) {
 		if(mousePress) {
 			g.drawRect(x + 1, y+ 1, width- 2, height-2);

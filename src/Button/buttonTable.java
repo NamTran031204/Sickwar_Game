@@ -22,31 +22,47 @@ public class buttonTable {
 		 this.y = y;
 		 this.width = width;
 		 this.height = height;
+		 importImg();
 		 initButton();
 
 	}
 	
 	public void draw(Graphics g) {
+		
 		g.setColor(Color.orange);
 		g.fillRect(x, y, width, height);
 		drawButton(g);
 		
-		
 	}
-	
+
 	
 	public void initButton() {
-		archer = new button(1123, 10 , 60, 60, "Archer");
-		warrior = new button(1247, 10 , 60, 60, "Warrior");
-		digger = new button(1411, 10 , 60, 60, "Gold Digger");
+		archer = new button(1123, 10 , 80, 80, aImg, "100G");
+		warrior = new button(1270, 10 , 80, 80, wImg, "100G");
+		digger = new button(1411, 10 , 80, 80, dImg, "100G");
 
 	}
 	
+	public void drawPicButton(Graphics g) {
+		archer.drawPic(g);
+		warrior.drawPic(g);
+		digger.drawPic(g);
+	}
+	
 	private void drawButton(Graphics g) {
-		archer.draw(g);
-		warrior.draw(g);
-		digger.draw(g);
+		drawPicButton(g);
 		drawSelectedChamp(g);
+	}
+	
+	private void importImg() {
+		try {
+			aImg = ImageIO.read(getClass().getResourceAsStream("/resource/archer_icon-removebg-preview.png"));
+			wImg = ImageIO.read(getClass().getResourceAsStream("/resource/warrior_icon-removebg-preview.png"));
+			dImg = ImageIO.read(getClass().getResourceAsStream("/resource/miner_icon-removebg-preview.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void drawSelectedChamp(Graphics g) {
@@ -124,26 +140,7 @@ public class buttonTable {
 		
 		
 	}
-	
-	
-	
-//	public void drawPicButton(Graphics g) {
-//		setting.drawOutline(g);
-//		setting.drawBody(g);
-//		g.drawImage(setImg, 10, 10, 50, 50, null);
-//	}
-	
-	
-//	private void importImg() {
-//		InputStream is = getClass().getResourceAsStream("/resource/background.png");
-//		try {
-//			img = ImageIO.read(is);
-//			setImg = ImageIO.read(getClass().getResourceAsStream("/resource/settings-icon-2048x2046-cw28eevx.png"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 	
 
 	

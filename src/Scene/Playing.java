@@ -16,6 +16,7 @@ import main.GamePanel;
 import object.Giant;
 import state.GameWorld;
 
+
 import static main.gameStatus.*;
 
 public class Playing extends gameScene implements screenMethod{
@@ -122,6 +123,7 @@ public class Playing extends gameScene implements screenMethod{
 		else {
 			if(setting.getOutline().contains(x, y)) {
 			setGameStatus(SETTING);
+			wd.getSetting().Status = 2;
 			}
 		}
 		

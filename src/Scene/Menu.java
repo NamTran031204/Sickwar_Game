@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 import Button.button;
 import main.Window;
 import main.GamePanel;
+
+
 import static main.gameStatus.*;
 
 public class Menu extends gameScene implements screenMethod{
@@ -84,10 +87,15 @@ public class Menu extends gameScene implements screenMethod{
 			setGameStatus(PLAYING);
 		}
 		if(set.getOutline().contains(x, y)) {
+			wd.getSetting().Status = 1;
 			setGameStatus(SETTING);
+
 		}
 		if(quit.getOutline().contains(x, y)) {
-			System.exit(0);;
+			int result = JOptionPane.showConfirmDialog(null, "Quitting?", null, JOptionPane.YES_NO_OPTION);
+			if(result == JOptionPane.YES_OPTION) {
+				System.exit(0);
+			}
 		}
 		
 	}
