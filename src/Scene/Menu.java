@@ -22,10 +22,9 @@ public class Menu extends gameScene implements screenMethod{
 	
 	BufferedImage img;
 	Random random;
-	private ArrayList<BufferedImage> sprite = new ArrayList<>();
 	button play, set, quit;
-	public Menu(Window wd) {
-		super(wd);
+	public Menu(Window wd, GamePanel gp) {
+		super(wd, gp);
 		random = new Random();
 //		importImg();
 //		loadSprite();

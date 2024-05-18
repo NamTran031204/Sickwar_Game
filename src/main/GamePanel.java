@@ -19,12 +19,12 @@ public class GamePanel extends JPanel{
 	Window wd;
 	Dimension size;
 	mouseListener mouse;
-    Dimension screenSize = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-    final public int SCREEN_WIDTH_MAX=screenSize.width;
-    final public int SCREEN_HEIGHT_MAX=screenSize.height;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public int SCREEN_WIDTH_MAX=screenSize.width;
+    public int SCREEN_HEIGHT_MAX=screenSize.height;
 
-	public final int Window_Height = 1920;
-	public final int Window_Width = 1080;
+	public int Window_Height = (int)screenSize.getHeight() * 2;
+	public int Window_Width = (int)screenSize.getWidth() * 2;
 
 	
 	public GamePanel(Window wd) {

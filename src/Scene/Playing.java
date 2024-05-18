@@ -20,13 +20,15 @@ import state.GameWorld;
 import static main.gameStatus.*;
 
 public class Playing extends gameScene implements screenMethod{
+	
 	BufferedImage img;
 	BufferedImage setImg;
 	button setting;
 	buttonTable buttontable;
 	public GameWorld gameWorld;
-	public Playing(Window wd) {
-		super(wd);
+	
+	public Playing(Window wd, GamePanel gp) {
+		super(wd, gp);
 		importImg();
 		initButton();
 		buttontable = new buttonTable(1090,0,445,100);
@@ -41,13 +43,13 @@ public class Playing extends gameScene implements screenMethod{
 		g.drawImage(gameWorld.bufImage, 0, 0, wd);
 		drawButton(g);
 		buttontable.draw(g);
+		wd.ui.draw(g);
 		
 	}
 	
 	
 	
 	public void drawButton(Graphics g) {
-	//	setting.draw(g);
 		drawPicButton(g);
 	}
 	public void drawPicButton(Graphics g) {
@@ -78,7 +80,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseMoved(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100) {
+		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
+		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
 			buttontable.mouseMoved(x, y);
 		}
 		setting.setMouseOver(false);
@@ -90,7 +93,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mousePress(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100) {
+		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
+		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
 			buttontable.mousePress(x, y);
 		}
 		if(setting.getOutline().contains(x, y)) {
@@ -101,7 +105,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseRelease(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100) {
+		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
+		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
 			buttontable.mouseRelease(x, y);
 		}
 		resetButton();
@@ -117,7 +122,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseClicked(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100) {
+		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
+		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
 			buttontable.mouseClicked(x, y);
 		}
 		else {

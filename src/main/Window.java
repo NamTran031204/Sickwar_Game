@@ -22,7 +22,7 @@ public class Window extends JFrame implements Runnable{
 	private final int FPS_SET = 60;
 	Rendering render;
 	
-	
+	public UI ui;
 	Thread thread;
 	Menu menu;
 	Playing playing;
@@ -44,11 +44,12 @@ public class Window extends JFrame implements Runnable{
 	}
 	
 	private void initClasses() {
+		ui = new UI(this);
 		render = new Rendering(this);
 		gp = new GamePanel(this);
-		menu = new Menu(this);
-		playing = new Playing(this);
-		setting = new Setting(this);
+		menu = new Menu(this, gp);
+		playing = new Playing(this, gp);
+		setting = new Setting(this, gp);
 		
 	}
 	

@@ -12,6 +12,7 @@ public class button {
 	boolean mouseOver;
 	boolean mousePress;
 	Rectangle outline;
+	int money;
 	private BufferedImage img;
 	//NORMAL BUTTON
 	public button(int x, int y, int width, int height, String text) {
@@ -32,13 +33,13 @@ public class button {
 		initOutline();
 	}
 	
-	public button(int x, int y, int width, int height, BufferedImage img, String text) {
+	public button(int x, int y, int width, int height, BufferedImage img, int money) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.img = img;
-		this.text = text;
+		this.money = money;
 		initOutline();
 	}
 	
@@ -67,8 +68,15 @@ public class button {
 		g.drawImage(img, x + 5, y + 5, 60, 60, null);
 		drawPicText(g);
 	}
+	
+	public void drawPicWthoutText(Graphics g) {
+		drawBody(g);
+		drawOutline(g);
+		g.drawImage(img, x + 5, y + 5, 60, 60, null);
+	}
 
 	private void drawPicText(Graphics g) {
+		text = Integer.toString(money);
 		g.drawString(text, x + 30 , y + 70);
 		
 	}

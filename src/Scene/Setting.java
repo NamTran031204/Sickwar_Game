@@ -19,8 +19,8 @@ public class Setting extends gameScene implements screenMethod{
 	button Menu, Quit, Return;
 	public static int Status;
 	
-	public Setting(Window wd) {
-		super(wd);
+	public Setting(Window wd, GamePanel gp) {
+		super(wd, gp);
 		initButton();
 
 	}
