@@ -81,6 +81,22 @@ public class ParticularObjectManager {
         
     }
     
+//  ptd
+    public void checkCollisionWithStatue(Statue statue) {
+        synchronized (particularObjects) {
+            for (ParticularObject object : particularObjects) {
+                if (object.getTeamType() == ParticularObject.TEAM2) { // TEAM2 là đội của kẻ thù
+                    if (object.getBoundForCollisionWithEnemy().intersects(statue.getBoundForCollision())) {
+                        statue.takeDamage(object.getDamage());
+                        if (statue.getHealth() <= 0) {
+                            gameWorld.state = GameWorld.GAMEOVER; // Trò chơi kết thúc khi tượng bị phá hủy
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public void draw(Graphics2D g2){
         synchronized(particularObjects){
             for(ParticularObject object: particularObjects)
