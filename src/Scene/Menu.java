@@ -15,7 +15,6 @@ import Button.button;
 import main.Window;
 import main.GamePanel;
 
-
 import static main.gameStatus.*;
 
 public class Menu extends gameScene implements screenMethod{
@@ -27,8 +26,8 @@ public class Menu extends gameScene implements screenMethod{
 		super(wd, gp);
 		random = new Random();
 //		importImg();
-//		loadSprite();
 		initButton();
+		gp.playMusic(0);
 	}
 
 	private void initButton() {
@@ -56,34 +55,13 @@ public class Menu extends gameScene implements screenMethod{
 		
 	}
 
-//	private void importImg() {
-//		InputStream is = getClass().getResourceAsStream("/spriteatlas.png");
-//		try {
-//			img = ImageIO.read(is);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
-//	
-//	private void loadSprite() {
-//		
-//		for(int y = 0; y < 10; y++) {
-//			for(int x = 0; x < 10; x++) {
-//				sprite.add(img.getSubimage(x * 32, y * 32, 32, 32));
-//			}
-//		}	
-//	}
-//	
-//	private int getRandomInt() {
-//		return random.nextInt(80);
-//	}
 
 	@Override
 	public void mouseClicked(int x, int y) {
 		if(play.getOutline().contains(x, y)) {
 			setGameStatus(PLAYING);
+			gp.stopMusic();
+			gp.playMusic(1);
 		}
 		if(set.getOutline().contains(x, y)) {
 			wd.getSetting().Status = 1;

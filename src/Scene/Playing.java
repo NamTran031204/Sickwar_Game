@@ -37,7 +37,7 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void render(Graphics g) {
-		//g.drawImage(img, 0, 0,SCREEN_WIDTH_MAX,SCREEN_HEIGHT_MAX ,null);	
+			
 		gameWorld.Update();
 		gameWorld.Render();
 		g.drawImage(gameWorld.bufImage, 0, 0, wd);

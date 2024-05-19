@@ -12,6 +12,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 import Input.mouseListener;
+import main.Audio;
 
 public class GamePanel extends JPanel{
 	
@@ -19,6 +20,8 @@ public class GamePanel extends JPanel{
 	Window wd;
 	Dimension size;
 	mouseListener mouse;
+	public Audio audio = new Audio();
+	public Audio se = new Audio();
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public int SCREEN_WIDTH_MAX=screenSize.width;
     public int SCREEN_HEIGHT_MAX=screenSize.height;
@@ -56,6 +59,25 @@ public class GamePanel extends JPanel{
 		super.paintComponent(g);
 		wd.render.render(g);
 	}
+	
+
+	
+	public void playMusic(int i) {
+		audio.setFile(i);
+		audio.playAudio();
+		audio.loopAudio();
+		
+	}
+	
+	public void stopMusic() {
+		audio.stop();
+	}
+	
+	public void playSoundEffect(int i) {
+		se.setFile(i);
+		se.playAudio();
+	}
+	
 	
 
 

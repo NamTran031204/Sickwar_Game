@@ -2,6 +2,7 @@ package Button;
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class buttonTable {
 	button digger;
 	button defend, attack;
 	BufferedImage aImg, wImg, dImg, atkImg, defImg;
+	Font moneyFont = new Font("Arial", Font.BOLD, 20);
 	int Money = 300;
 	int selectedChamp = 3;
 	
@@ -207,6 +209,7 @@ public class buttonTable {
 	}
 	
 	public void drawGold(Graphics g) {
+		g.setFont(moneyFont);
 		g.setColor(Color.white);
 		g.drawString(Money + "G", 234, 30);
 	}
