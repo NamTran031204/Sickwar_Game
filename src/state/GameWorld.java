@@ -15,6 +15,7 @@ import Scene.Playing;
 import Scene.gameScene;
 import main.GamePanel;
 import object.Giant;
+import object.Miner;
 import object.ParticularObject;
 import object.ParticularObjectManager;
 import object.Statue;
@@ -35,13 +36,14 @@ public class GameWorld {
     public ParticularObjectManager particularObjectManager;
     public Statue statue; // ptd
     Playing playing;
-    Giant giant1;
+  //  Giant giant1;
 // Thong so cua game
     public int gold=500;
     public int numHuman=2;// ban dau co 2 ng dao vang
     public long startTime = 0;
     
     private final int[] lineYPositions = new int[4]; // ptd
+
     public GameWorld(Playing playing){
         try {
             bg= ImageIO.read(new File("src/resource/background.png"));
@@ -51,13 +53,18 @@ public class GameWorld {
         bufImage = new BufferedImage(SCREEN_WIDTH_MAX, SCREEN_HEIGHT_MAX, BufferedImage.TYPE_INT_ARGB);
         particularObjectManager = new ParticularObjectManager(this);
         this.playing=playing;
-        giant1=new Giant(0, 500,1, this);
+   //     giant1=new Giant(0, 500,1, this);
         statue = new Statue(20,500,90,160,200); // ptd
         
         // Xác định vị trí các đường line - ptd
         for (int i = 0; i < 4; i++) {
             lineYPositions[i] = 475 + i * 75; 
         }
+    }
+    
+    // ptd2
+    public void setState(int newState) {
+        state = newState;
     }
     
    public void Update(){
@@ -91,18 +98,34 @@ public class GameWorld {
     }
     }
     }
+   
+
+   
     public void initEnemy(long curTime){
         if(startTime==0) startTime = curTime;
-        while(curTime-startTime>=3000){ // ptd sửa
-        	for(int i = 0; i <4 ; i++) { // ptd
-        	       	Giant entity = new Giant(200, lineYPositions[i], 1, this); // ptd
-        	        particularObjectManager.addObject(entity); // ptd
-        	        }
-            Giant giant = new Giant(1000, 500, 2, this);
-            particularObjectManager.addObject(giant); // ptd
-            startTime = curTime; // ptd
+        if(curTime-startTime >= 1000 && curTime-startTime <=1100){ // ptd sửa
+         //   Giant giant = new Giant(1000, 500, 2, this);
+         //   particularObjectManager.addObject(giant); // ptd
         
         }
 
+    }
+    
+    // ptd2
+    public void initEntity(int type) {
+        for (int i = 0; i < 4; i++) {
+            switch (type) {
+                case 0: 
+                //	entity = new Archer(200, lineYPositions[i], 1, this);
+                    break;
+                case 1: 
+                //	entity = new Warrior(200, lineYPositions[i], 1, this);
+                    break;
+                case 2: 
+                	Miner miner = new Miner(ParticularObject.TEAM1, 200, lineYPositions[i], this);
+                    particularObjectManager.addObject(miner);
+                    break;
+            }
+        }
     }
 }

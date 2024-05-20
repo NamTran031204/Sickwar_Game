@@ -31,8 +31,9 @@ public class Playing extends gameScene implements screenMethod{
 		super(wd, gp);
 		importImg();
 		initButton();
-		buttontable = new buttonTable(1090,0,445,100);
 		gameWorld=new GameWorld(this);
+		buttontable = new buttonTable(1090,0,445,100,gameWorld ); // ptd2
+
 	}
 
 	@Override

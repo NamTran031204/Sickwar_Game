@@ -12,22 +12,31 @@ public abstract class Human extends ParticularObject{
  
     private int cost;
     public float addressX=150;
+    
+
+
     public Human(float x, float y, float width, float height, int blood, int team,int damage,int cost,GameWorld gameWorld) {
         super(x, y, width, height, blood,team,damage, gameWorld);
         setCost(cost);
         setState(ALIVE);
         
     }
+    
+    public void superUpdate(){
+        super.Update();
+    }
+    
     @Override
     public void Update() {
         super.Update();
-        if(getState()==ALIVE){
-        if(action==ATTACKING){
+        
+        if(getState()==ALIVE){  
+        if(action==ATTACKING){ 
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
-            action=ATTACKING;
+            action=ATTACKING; 
             }
             else {
-                action=MOVING;
+                action=MOVING; 
             }
         }
            
@@ -35,6 +44,7 @@ public abstract class Human extends ParticularObject{
         
         if(action == MOVING){
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
+            	
                 action=ATTACKING;
                 }
             else {
@@ -100,10 +110,12 @@ public abstract class Human extends ParticularObject{
             if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<addressX+800){
                 action=MOVING;
             }
-            if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>addressX){
+            else if(getGameWorld().state==GameWorld.DEFEND&&getPosX()>addressX){
                 action=MOVING;
-            }
-                }
+            } 
+            
+
+          }
     }
     }
     }

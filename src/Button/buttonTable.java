@@ -10,6 +10,8 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import state.GameWorld;
+
 public class buttonTable {
 	private int x, y ,width, height;
 	button archer;
@@ -20,15 +22,16 @@ public class buttonTable {
 	Font moneyFont = new Font("Arial", Font.BOLD, 20);
 	int Money = 300;
 	int selectedChamp = 3;
+	private GameWorld gameWorld; // ptd2
 	
-	public buttonTable(int x, int y, int width, int height) {
+	public buttonTable(int x, int y, int width, int height, GameWorld gameWorld) {
 		this.x = x;
 		 this.y = y;
 		 this.width = width;
 		 this.height = height;
 		 importImg();
 		 initButton();
-
+		 this.gameWorld = gameWorld; // ptd2
 	}
 	
 	public void draw(Graphics g) {
@@ -163,11 +166,13 @@ public class buttonTable {
 			
 			if(Money > archer.money) {
 				Money -= (archer.money / 2);
+				gameWorld.initEntity(0); // ptd2
 				selectedChamp = 0;
 			}
 			
 			else if(Money == archer.money) {
 				Money -= (archer.money);
+				gameWorld.initEntity(0); // ptd2
 				selectedChamp = 0;
 			}
 			
@@ -177,11 +182,13 @@ public class buttonTable {
 			
 			if(Money > warrior.money) {
 				Money -= (warrior.money / 2);
+				 gameWorld.initEntity(1); // ptd2
 				selectedChamp = 1;
 			}
 			
 			else if(Money == warrior.money) {
 				Money -= (warrior.money);
+				 gameWorld.initEntity(1); // ptd2
 				selectedChamp = 1;
 			}
 			return;
@@ -189,21 +196,25 @@ public class buttonTable {
 		if(digger.getOutline().contains(x, y)) {
 			if(Money > digger.money) {
 				Money -= (digger.money / 2);
+				gameWorld.initEntity(2); // ptd2
 				selectedChamp = 2;
 			}
 			
 			else if(Money == digger.money) {
 				Money -= (digger.money);
+				gameWorld.initEntity(2); // ptd2
 				selectedChamp = 2;
 			}
 			return;
 		}
 		if(defend.getOutline().contains(x, y)) {
 			System.out.println("defend");
+			 gameWorld.setState(GameWorld.DEFEND); // ptd2
 			return;
 		}
 		if(attack.getOutline().contains(x, y)) {
 			System.out.println("attack");
+			gameWorld.setState(GameWorld.ATTACK); // ptd2
 			return;
 		}
 	}
