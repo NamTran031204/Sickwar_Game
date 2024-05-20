@@ -19,6 +19,7 @@ import object.Miner;
 import object.ParticularObject;
 import object.ParticularObjectManager;
 import object.Statue;
+import object.Warrior;
 
 
 public class GameWorld {
@@ -119,10 +120,12 @@ public class GameWorld {
                 //	entity = new Archer(200, lineYPositions[i], 1, this);
                     break;
                 case 1: 
-                //	entity = new Warrior(200, lineYPositions[i], 1, this);
-                    break;
+                	Warrior warrior = new Warrior(200, lineYPositions[i], 1, this);
+                	   particularObjectManager.addObject(warrior);
+                       break;
+                   
                 case 2: 
-                	Miner miner = new Miner(ParticularObject.TEAM1, 200, lineYPositions[i], this);
+                	Miner miner = new Miner(1, 200, lineYPositions[i], this);
                     particularObjectManager.addObject(miner);
                     break;
             }
