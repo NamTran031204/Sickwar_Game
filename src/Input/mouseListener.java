@@ -36,8 +36,11 @@ public class mouseListener implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			System.out.println(e.getX() + " " + e.getY());
+		}
 		switch(gameStatus.gs) {
+		
 		case MENU:
 				wd.getMenu().mouseClicked(e.getX(), e.getY());
 			break;
@@ -54,9 +57,7 @@ public class mouseListener implements MouseListener, MouseMotionListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1) {
-			System.out.println(e.getX() + " " + e.getY());
-		}
+		
 		
 		switch(gameStatus.gs) {
 		

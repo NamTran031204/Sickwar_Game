@@ -32,7 +32,7 @@ public class Playing extends gameScene implements screenMethod{
 		importImg();
 		initButton();
 		gameWorld=new GameWorld(this);
-		buttontable = new buttonTable(1090,0,445,100,gameWorld ); // ptd2
+		buttontable = new buttonTable(600,0,445,100,gameWorld ); // ptd2
 
 	}
 
@@ -81,8 +81,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseMoved(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
-		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
+		if(x >= 600 && x <=1045 && y >= 0 && y <= 100
+		|| x >= 640 && x <= 990 && y >= 100 && y <= 200) {
 			buttontable.mouseMoved(x, y);
 		}
 		setting.setMouseOver(false);
@@ -94,8 +94,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mousePress(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
-		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
+		if(x >= 600 && x <=1045 && y >= 0 && y <= 100
+				|| x >= 640 && x <= 990 && y >= 100 && y <= 200) {
 			buttontable.mousePress(x, y);
 		}
 		if(setting.getOutline().contains(x, y)) {
@@ -106,8 +106,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseRelease(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
-		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
+		if(x >= 600 && x <=1045 && y >= 0 && y <= 100
+				|| x >= 640 && x <= 990 && y >= 100 && y <= 200) {
 			buttontable.mouseRelease(x, y);
 		}
 		resetButton();
@@ -123,8 +123,8 @@ public class Playing extends gameScene implements screenMethod{
 
 	@Override
 	public void mouseClicked(int x, int y) {
-		if(x >= 1090 && x <=1535 && y >= 0 && y <= 100
-		|| x >= 1413 && x <= 1533 && y >= 100 && y <= 300) {
+		if(x >= 600 && x <=1045 && y >= 0 && y <= 100
+				|| x >= 640 && x <= 990 && y >= 100 && y <= 200) {
 			buttontable.mouseClicked(x, y);
 		}
 		else {

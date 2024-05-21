@@ -38,18 +38,18 @@ public class buttonTable {
 		
 		g.setColor(Color.orange);
 		g.fillRect(x, y, width, height);
-		g.fillRect(1413, 100, 120, 200);
+		g.fillRect(640, 100, 350, 100);
 		drawButton(g);
 		drawGold(g);
 	}
 
 	
 	public void initButton() {
-		archer = new button(1123, 10 , 80, 80, aImg, 100);
-		warrior = new button(1270, 10 , 80, 80, wImg, 100);
-		digger = new button(1411, 10 , 80, 80, dImg, 50);
-		defend = new button(1435, 105, 80, 80, defImg);
-		attack = new button(1435, 205, 80, 80, atkImg);
+		archer = new button(655, 10 , 80, 80, aImg, 100);
+		warrior = new button(785, 10 , 80, 80, wImg, 100);
+		digger = new button(915, 10 , 80, 80, dImg, 50);
+		defend = new button(717, 110, 80, 80, defImg);
+		attack = new button(849, 110, 80, 80, atkImg);
 
 	}
 	
@@ -81,19 +81,40 @@ public class buttonTable {
 	
 	private void drawSelectedChamp(Graphics g) {
 		if(selectedChamp == 0) {
+			if(gameWorld.gold >= archer.money) {
+				gameWorld.gold  -= (archer.money);
+				gameWorld.init(0); // ptd2
+				
+			}
+			selectedChamp = 4;
 			
 		}
 		else if(selectedChamp == 1) {
+			if(gameWorld.gold  >= warrior.money) {
+				gameWorld.gold  -= (warrior.money);
+				 gameWorld.init(1); // ptd2
+			}
+
+			selectedChamp = 4;
 			
 		}
 		else if(selectedChamp == 2) {
-			
+			if(gameWorld.gold  >= digger.money) {
+				gameWorld.gold  -= (digger.money);
+				gameWorld.init(2); // ptd2
+			}
+
+			selectedChamp = 4;
 		}
-		else if(selectedChamp == 2) {
-			
+		else if(selectedChamp == 3) {
+			System.out.println("defend");
+			 gameWorld.setState(GameWorld.DEFEND); // ptd2
+			selectedChamp = 4;
 		}
-		else if(selectedChamp == 2) {
-			
+		else if(selectedChamp == 5) {
+			System.out.println("attack");
+			gameWorld.setState(GameWorld.ATTACK); // ptd2
+			selectedChamp = 4;
 		}
 	}
 
@@ -158,63 +179,25 @@ public class buttonTable {
 
 	public void mouseClicked(int x, int y) {
 		if(archer.getOutline().contains(x, y)) {
-			
-			if(gameWorld.gold > archer.money) {
-				gameWorld.gold  -= (archer.money / 2);
-				gameWorld.init(0); // ptd2
-				selectedChamp = 0;
-				
-			}
-			
-			else if(gameWorld.gold  == archer.money) {
-				gameWorld.gold  -= (archer.money);
-				gameWorld.init(0); // ptd2
-				selectedChamp = 0;
-				
-			}
+			selectedChamp = 0;
 			
 			return;
 		}
 		if(warrior.getOutline().contains(x, y)) {
 			
-			if(gameWorld.gold  > warrior.money) {
-				gameWorld.gold  -= (warrior.money / 2);
-				 gameWorld.init(1); // ptd2
-				selectedChamp = 1;
-				
-			}
-
-			
-			else if(gameWorld.gold  == warrior.money) {
-				gameWorld.gold  -= (warrior.money);
-				 gameWorld.init(1); // ptd2
-				selectedChamp = 1;
-				
-			}
+			selectedChamp = 1;
 			return;
 		}
 		if(digger.getOutline().contains(x, y)) {
-			if(gameWorld.gold  > digger.money) {
-				gameWorld.gold  -= (digger.money / 2);
-				gameWorld.init(2); // ptd2
-				selectedChamp = 2;
-			}
-			
-			else if(gameWorld.gold  == digger.money) {
-				gameWorld.gold -= (digger.money);
-				gameWorld.init(2); // ptd2
-				selectedChamp = 2;
-			}
+			selectedChamp = 2;
 			return;
 		}
 		if(defend.getOutline().contains(x, y)) {
-			System.out.println("defend");
-			 gameWorld.setState(GameWorld.DEFEND); // ptd2
+			selectedChamp = 3;
 			return;
 		}
 		if(attack.getOutline().contains(x, y)) {
-			System.out.println("attack");
-			gameWorld.setState(GameWorld.ATTACK); // ptd2
+			selectedChamp = 5;
 			return;
 		}
 	}
