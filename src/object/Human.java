@@ -1,6 +1,7 @@
 package object;
 
 import java.awt.geom.Point2D;
+import java.util.Random;
 
 import state.GameWorld;
 
@@ -19,7 +20,8 @@ public abstract class Human extends ParticularObject{
         super(x, y, width, height, blood,team,damage, gameWorld);
         setCost(cost);
         setState(ALIVE);
-        
+        Random random=new Random();
+        addressX=random.nextInt((300 - 100) + 1)+100;
     }
     
     public void superUpdate(){

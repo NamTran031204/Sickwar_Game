@@ -57,11 +57,11 @@ public abstract class ParticularObject extends GameObject {
                 ParticularObject object = getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this);
                 if(object != null) {
 
-                    if(object.getDamage() > 0) {
+                    //if(object.getDamage() > 0) {
 
-                        beHurt(object.getDamage());
+                        object.beHurt(getDamage());
                         if(this.getBlood()<=0) state = BEHURT;
-                    }
+                    //}
 
                 }
                 break;

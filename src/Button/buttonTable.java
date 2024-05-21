@@ -81,24 +81,19 @@ public class buttonTable {
 	
 	private void drawSelectedChamp(Graphics g) {
 		if(selectedChamp == 0) {
-			g.setColor(Color.red);
-			g.fillRect(500, 500, 60, 60);
+			
 		}
 		else if(selectedChamp == 1) {
-			g.setColor(Color.blue);
-			g.fillRect(500, 500, 60, 60);
+			
 		}
 		else if(selectedChamp == 2) {
-			g.setColor(Color.green);
-			g.fillRect(500, 500, 60, 60);
+			
 		}
 		else if(selectedChamp == 2) {
-			g.setColor(Color.green);
-			g.fillRect(500, 500, 60, 60);
+			
 		}
 		else if(selectedChamp == 2) {
-			g.setColor(Color.green);
-			g.fillRect(500, 500, 60, 60);
+			
 		}
 	}
 
@@ -164,45 +159,50 @@ public class buttonTable {
 	public void mouseClicked(int x, int y) {
 		if(archer.getOutline().contains(x, y)) {
 			
-			if(Money > archer.money) {
-				Money -= (archer.money / 2);
-				gameWorld.initEntity(0); // ptd2
+			if(gameWorld.gold > archer.money) {
+				gameWorld.gold  -= (archer.money / 2);
+				gameWorld.init(0); // ptd2
 				selectedChamp = 0;
+				
 			}
 			
-			else if(Money == archer.money) {
-				Money -= (archer.money);
-				gameWorld.initEntity(0); // ptd2
+			else if(gameWorld.gold  == archer.money) {
+				gameWorld.gold  -= (archer.money);
+				gameWorld.init(0); // ptd2
 				selectedChamp = 0;
+				
 			}
 			
 			return;
 		}
 		if(warrior.getOutline().contains(x, y)) {
 			
-			if(Money > warrior.money) {
-				Money -= (warrior.money / 2);
-				 gameWorld.initEntity(1); // ptd2
+			if(gameWorld.gold  > warrior.money) {
+				gameWorld.gold  -= (warrior.money / 2);
+				 gameWorld.init(1); // ptd2
 				selectedChamp = 1;
+				
 			}
+
 			
-			else if(Money == warrior.money) {
-				Money -= (warrior.money);
-				 gameWorld.initEntity(1); // ptd2
+			else if(gameWorld.gold  == warrior.money) {
+				gameWorld.gold  -= (warrior.money);
+				 gameWorld.init(1); // ptd2
 				selectedChamp = 1;
+				
 			}
 			return;
 		}
 		if(digger.getOutline().contains(x, y)) {
-			if(Money > digger.money) {
-				Money -= (digger.money / 2);
-				gameWorld.initEntity(2); // ptd2
+			if(gameWorld.gold  > digger.money) {
+				gameWorld.gold  -= (digger.money / 2);
+				gameWorld.init(2); // ptd2
 				selectedChamp = 2;
 			}
 			
-			else if(Money == digger.money) {
-				Money -= (digger.money);
-				gameWorld.initEntity(2); // ptd2
+			else if(gameWorld.gold  == digger.money) {
+				gameWorld.gold -= (digger.money);
+				gameWorld.init(2); // ptd2
 				selectedChamp = 2;
 			}
 			return;
@@ -222,7 +222,7 @@ public class buttonTable {
 	public void drawGold(Graphics g) {
 		g.setFont(moneyFont);
 		g.setColor(Color.white);
-		g.drawString(Money + "G", 234, 30);
+		g.drawString(gameWorld.gold + "G", 234, 30);
 	}
 	
 

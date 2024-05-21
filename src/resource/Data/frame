@@ -13,10 +13,10 @@ src/resource/giant/move/Giantmove_6.png
 
 GiantPause
 true
-166666666
-src/resource/giant/move/Giantmove_2.png
-src/resource/giant/move/Giantmove_3.png
-src/resource/giant/move/Giantmove_4.png
+366666666
+src/resource/giant/pause/GiantPause1.png
+src/resource/giant/pause/GiantPause2.png
+src/resource/giant/pause/GiantPause3.png
 
 GiantAttack
 true
