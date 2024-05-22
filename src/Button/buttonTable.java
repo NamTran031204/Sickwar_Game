@@ -83,7 +83,7 @@ public class buttonTable {
 		if(selectedChamp == 0) {
 			if(gameWorld.gold >= archer.money) {
 				gameWorld.gold  -= (archer.money);
-				gameWorld.init(0); // ptd2
+				gameWorld.init(0,gameWorld); // ptd2
 				
 			}
 			selectedChamp = 4;
@@ -92,7 +92,7 @@ public class buttonTable {
 		else if(selectedChamp == 1) {
 			if(gameWorld.gold  >= warrior.money) {
 				gameWorld.gold  -= (warrior.money);
-				 gameWorld.init(1); // ptd2
+				 gameWorld.init(1,gameWorld); // ptd2
 			}
 
 			selectedChamp = 4;
@@ -101,7 +101,7 @@ public class buttonTable {
 		else if(selectedChamp == 2) {
 			if(gameWorld.gold  >= digger.money) {
 				gameWorld.gold  -= (digger.money);
-				gameWorld.init(2); // ptd2
+				gameWorld.init(2,gameWorld); // ptd2
 			}
 
 			selectedChamp = 4;
