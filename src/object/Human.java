@@ -1,5 +1,6 @@
 package object;
 
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
@@ -31,7 +32,11 @@ public abstract class Human extends ParticularObject{
     @Override
     public void Update() {
         super.Update();
-        
+        Statue statue = getGameWorld().statue;
+        if (isCollidingWithStatue(statue)) {
+            setAction(ATTACKING);
+            setSpeedX(0);
+           }
         if(getState()==ALIVE){  
         if(action==ATTACKING){ 
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
@@ -137,6 +142,13 @@ public abstract class Human extends ParticularObject{
     public void setCost(int cost) {
         this.cost = cost;
     }
-    
+    public boolean isCollidingWithStatue(Statue statue) {
+        if (getTeamType() == 2) {
+            Rectangle humanBound = getBoundForCollisionWithEnemy();
+            Rectangle statueBound = statue.getBoundForCollision();
+            return humanBound.intersects(statueBound);
+        }
+        return false;
+    }
 
 }

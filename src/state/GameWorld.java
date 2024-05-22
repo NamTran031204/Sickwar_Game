@@ -56,7 +56,7 @@ public class GameWorld {
         particularObjectManager = new ParticularObjectManager(this);
         arrowManager = new ArrowManager(this);
         this.playing = playing;
-        statue = new Statue(20, 500, 90, 160, 200);
+        statue = new Statue(20, 500, 90, 160, 10000);
 
         for (int i = 0; i < 4; i++) {
             lineYPositions[i] = 475 + i * 75;
