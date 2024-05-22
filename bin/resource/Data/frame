@@ -1,4 +1,4 @@
-9
+10
 
 GiantMove
 true
@@ -93,3 +93,14 @@ src/resource/archer/attack/ArcherAttack_7.png
 src/resource/archer/attack/ArcherAttack_8.png
 src/resource/archer/attack/ArcherAttack_9.png
 src/resource/archer/attack/ArcherAttack_10.png
+
+ForwardArrow
+true
+499999999
+src/resource/archer/arrow/ForwardArrow_1.png
+src/resource/archer/arrow/ForwardArrow_1.png
+src/resource/archer/arrow/ForwardArrow_1.png
+src/resource/archer/arrow/ForwardArrow_1.png
+src/resource/archer/arrow/ForwardArrow_1.png
+src/resource/archer/arrow/ForwardArrow_1.png
+
