@@ -20,11 +20,10 @@ public class Miner extends Human {
         setSpeedX(1f);
         this.goldPosX=goldPosX;
         this.goldPosY=goldPosY;
-        move = Loader.getInstanceLoader().getAnimation("GiantMove");
-        attack=Loader.getInstanceLoader().getAnimation("GiantAttack");
+        move = Loader.getInstanceLoader().getAnimation("MinerRun");
+        attack=Loader.getInstanceLoader().getAnimation("MinerWork");
         attack.flipAll();
-        attackBack=Loader.getInstanceLoader().getAnimation("GiantAttack");
-        die=Loader.getInstanceLoader().getAnimation("GiantPause");
+        attackBack=Loader.getInstanceLoader().getAnimation("MinerWork");
         curAnimation=move;
         
     }

@@ -1,4 +1,4 @@
-10
+12
 
 GiantMove
 true
@@ -104,3 +104,29 @@ src/resource/archer/arrow/ForwardArrow_1.png
 src/resource/archer/arrow/ForwardArrow_1.png
 src/resource/archer/arrow/ForwardArrow_1.png
 
+MinerRun
+true
+166666666
+src/resource/miner/run/0001.png
+src/resource/miner/run/0003.png
+src/resource/miner/run/0005.png
+src/resource/miner/run/0007.png
+src/resource/miner/run/0009.png
+src/resource/miner/run/0011.png
+
+MinerWork
+true
+166666666
+src/resource/miner/work/0007.png
+src/resource/miner/work/0013.png
+src/resource/miner/work/0019.png
+src/resource/miner/work/0025.png
+src/resource/miner/work/0031.png
+src/resource/miner/work/0037.png
+src/resource/miner/work/0042.png
+src/resource/miner/work/0047.png
+src/resource/miner/work/0052.png
+src/resource/miner/work/0057.png
+src/resource/miner/work/0062.png
+src/resource/miner/work/0067.png
+src/resource/miner/work/0072.png

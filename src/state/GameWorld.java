@@ -16,11 +16,13 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 
 import Scene.Playing;
+import object.Archer;
 import object.ArrowManager;
 import object.Giant;
 import object.Miner;
 import object.ParticularObjectManager;
 import object.Statue;
+import object.Warrior;
 
 public class GameWorld {
     Dimension screenSize = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
@@ -48,7 +50,7 @@ public class GameWorld {
 
     public GameWorld(Playing playing) {
         try {
-            bg = ImageIO.read(new File("src/resource/background.png"));
+            bg = ImageIO.read(new File("src/resource/game_bg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,7 +58,7 @@ public class GameWorld {
         particularObjectManager = new ParticularObjectManager(this);
         arrowManager = new ArrowManager(this);
         this.playing = playing;
-        statue = new Statue(20, 500, 90, 160, 10000);
+        statue = new Statue(20, 500, 135, 240, 10000);
 
         for (int i = 0; i < 4; i++) {
             lineYPositions[i] = 475 + i * 75;
@@ -112,10 +114,10 @@ public class GameWorld {
             System.out.println(i);
             switch (type) {
                 case 0:
-                    // entity = new Archer(200, lineYPositions[i], 1, this);
+                	Archer archer = new Archer(0, lineYPositions[i % 4], 1, gameWorld );
                     break;
                 case 1:
-                    Giant giant = new Giant(0, lineYPositions[i % 4], 1, gameWorld);
+                    Warrior warrior = new Warrior(0, lineYPositions[i % 4], 1, gameWorld);
                     // particularObjectManager.addObject(giant);
                     break;
                 case 2:
