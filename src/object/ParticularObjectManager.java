@@ -53,7 +53,7 @@ public class ParticularObjectManager {
                 ParticularObject objectInList = particularObjects.get(id);
 
                 if(object.getTeamType() != objectInList.getTeamType() && 
-                        object.getBoundForCollisionWithEnemy().intersects(objectInList.getBoundForCollisionWithEnemy())){
+                        object.getBoundForCollisionWithEnemy().intersects(objectInList.getObjectBound())){
                     return objectInList;
                 }
             }

@@ -48,6 +48,7 @@ public class GameWorld {
     private final int[] lineYPositions = new int[4];
     private final ExecutorService executorService;
 
+    public int NumofGiants = 0;
     public GameWorld(Playing playing) {
         try {
             bg = ImageIO.read(new File("src/resource/game_bg.png"));
@@ -60,12 +61,13 @@ public class GameWorld {
         this.playing = playing;
         statue = new Statue(10, 350, 300, 380, 10000);
 
-        for (int i = 0; i < 4; i++) {
-            lineYPositions[i] = 475 + i * 75;
+        for (int i = 0; i < 3; i++) {
+            lineYPositions[i] = 475 + i * 7;
         }
         timer = new Timer();
+        long lastTime = System.currentTimeMillis();
         executorService = Executors.newCachedThreadPool(); 
-        initEnemy(this);
+       initEnemy(this);
     }
 
     public void setState(int newState) {
@@ -114,18 +116,18 @@ public class GameWorld {
             System.out.println(i);
             switch (type) {
                 case 0:
-                	Archer archer = new Archer(0, lineYPositions[i % 4], 1, gameWorld );
+                	Archer archer = new Archer(0, lineYPositions[i % 3], 1, gameWorld );
                     i++;
                     break;
                     
                 case 1:
-                    Warrior warrior = new Warrior(0, lineYPositions[i % 4], 1, gameWorld);
+                    Warrior warrior = new Warrior(0, lineYPositions[i % 3], 1, gameWorld);
                     // particularObjectManager.addObject(giant);
                     i++;
                     break;
                     
                 case 2:
-                    Miner miner = new Miner(1, 200, lineYPositions[i % 4], gameWorld);
+                    Miner miner = new Miner(1, 200, 700, gameWorld);
                     // particularObjectManager.addObject(miner);
                     break;
             }
@@ -139,26 +141,37 @@ public class GameWorld {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                for (int i = 0; i < 4; i++) {
-                    Giant entity = new Giant(SCREEN_WIDTH_MAX, lineYPositions[i], 2, gameWorld);
+                
+                    Giant entity = new Giant(SCREEN_WIDTH_MAX, 480, 2, gameWorld);
                     // particularObjectManager.addObject(entity);
-                }
-                j++;
-                System.out.println(j);
+                
+       
             }
         }, 5000);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                for (int i = 0; i < 4; i++) {
-                    Giant entity1 = new Giant(SCREEN_WIDTH_MAX, lineYPositions[i] + 10, 2, gameWorld);
+               
+                    Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld);
                     // particularObjectManager.addObject(entity);
-                }
-                j++;
+                    entity1.setBlood(3500);
+              
             }
         }, 10000);
-    }
 
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+               
+                    Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld);
+                    // particularObjectManager.addObject(entity);
+                    entity2.setBlood(4000);
+              
+            }
+        }, 15000);
+
+
+    }
     public void shutdown() {
         executorService.shutdown();
         try {

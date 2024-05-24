@@ -31,6 +31,11 @@ public class Arrow extends ParticularObject {
        return new Rectangle((int)getPosX(),(int)getPosY(),(int)getWidth(),(int)getHeight());
     }
 
+    @Override
+    public Rectangle getObjectBound() {
+        Rectangle rec = new Rectangle(0,0,0,0);
+        return rec;
+    }
     public void Update() {
         super.Update();
         setPosX(getPosX() + getSpeedX());

@@ -18,7 +18,7 @@ public class Archer extends Human {
     private long lastShootingTime;
         
     public Archer (float x , float y ,int team, GameWorld gameWorld) {
-        super(x, y, 70, 100, 500, team, 0, 500, gameWorld);
+        super(x, y, 70, 100, 500, team, 10, 500, gameWorld);
 
         setTeamType(TEAM1);
 
@@ -34,7 +34,7 @@ public class Archer extends Human {
 
         curAnimation = ArcherRun;
 
-        setSpeedX(1);
+        setSpeedX(2);
 
     }
     public void draw(Graphics2D g2){
@@ -119,6 +119,11 @@ public class Archer extends Human {
     @Override
     public Rectangle getBoundForCollisionWithEnemy() {
         Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth() + 300,(int)getHeight());
+        return rec;
+    }
+    @Override
+    public Rectangle getObjectBound() {
+        Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
         return rec;
     }
         

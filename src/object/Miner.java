@@ -56,6 +56,11 @@ public class Miner extends Human {
     }
 
     @Override
+    public Rectangle getObjectBound() {
+        Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
+        return rec;
+    }
+    @Override
     public void draw(Graphics2D g2) {
         curAnimation.draw(getPosX(), getPosY(), g2);
  }

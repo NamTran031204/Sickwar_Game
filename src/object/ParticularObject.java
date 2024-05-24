@@ -97,6 +97,7 @@ public abstract class ParticularObject extends GameObject {
     
     }
     public abstract Rectangle getBoundForCollisionWithEnemy();
+    public abstract Rectangle getObjectBound();
 
     public abstract void draw(Graphics2D g2);
     

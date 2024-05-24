@@ -105,5 +105,10 @@ public class Warrior extends Human {
         Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth()+10,(int)getHeight()+10);
         return rec;
     }
+    @Override
+    public Rectangle getObjectBound() {
+        Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
+        return rec;
+    }
 
 }

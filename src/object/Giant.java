@@ -103,5 +103,10 @@ public class Giant extends Human {
         Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
         return rec;
     }
+    @Override
+    public Rectangle getObjectBound() {
+        Rectangle rec = new Rectangle((int)(getPosX()-getWidth()/2),(int)(getPosY()-getHeight()/2),(int)getWidth(),(int)getHeight());
+        return rec;
+    }
 
 }
