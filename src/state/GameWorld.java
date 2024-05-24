@@ -62,7 +62,7 @@ public class GameWorld {
         statue = new Statue(10, 350, 300, 380, 10000);
 
         for (int i = 0; i < 3; i++) {
-            lineYPositions[i] = 475 + i * 7;
+            lineYPositions[i] = 550 + i * 7;
         }
         timer = new Timer();
         long lastTime = System.currentTimeMillis();
