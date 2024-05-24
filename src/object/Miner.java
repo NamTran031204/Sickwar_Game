@@ -22,8 +22,6 @@ public class Miner extends Human {
         this.goldPosY=goldPosY;
         move = Loader.getInstanceLoader().getAnimation("MinerRun");
         attack=Loader.getInstanceLoader().getAnimation("MinerWork");
-        attack.flipAll();
-        attackBack=Loader.getInstanceLoader().getAnimation("MinerWork");
         curAnimation=move;
         
     }

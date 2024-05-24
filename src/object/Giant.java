@@ -29,7 +29,7 @@ public class Giant extends Human {
         attackBack=Loader.getInstanceLoader().getAnimation("GiantAttack");
         attack=Loader.getInstanceLoader().getAnimation("GiantAttack");
         attack.flipAll();
-        setSpeedX(0.5f);
+        setSpeedX(2f);
         setSpeedY(0);
         if(getTeamType()==TEAM1) curAnimation=move;
         else curAnimation=moveBack;
@@ -44,6 +44,13 @@ public class Giant extends Human {
 
     public void Update(){
         super.Update();
+        Statue statue = getGameWorld().statue;
+        if (isCollidingWithStatue(statue)) {
+            setAction(ATTACKING);
+            setSpeedX(0);
+            curAnimation = (getDirection() == RIGHT_DIR) ? attack : attackBack;
+            curAnimation.update(System.nanoTime());
+           }
         if(getAction()==ATTACKING){
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null &&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
              curAnimation=attackBack;

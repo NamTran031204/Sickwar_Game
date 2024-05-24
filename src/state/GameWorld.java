@@ -58,7 +58,7 @@ public class GameWorld {
         particularObjectManager = new ParticularObjectManager(this);
         arrowManager = new ArrowManager(this);
         this.playing = playing;
-        statue = new Statue(20, 500, 135, 240, 10000);
+        statue = new Statue(10, 350, 300, 380, 10000);
 
         for (int i = 0; i < 4; i++) {
             lineYPositions[i] = 475 + i * 75;
@@ -97,10 +97,10 @@ public class GameWorld {
             g2 = (Graphics2D) bufImage.getGraphics();
             if (g2 != null) {
                 g2.drawImage(bg, 0, 0, SCREEN_WIDTH_MAX, SCREEN_HEIGHT_MAX, null);
-                g2.setColor(Color.gray);
-                for (int y : lineYPositions) {
-                    g2.drawLine(0, y, SCREEN_WIDTH_MAX, y);
-                }
+              //  g2.setColor(Color.gray);
+              // for (int y : lineYPositions) {
+              //     g2.drawLine(0, y, SCREEN_WIDTH_MAX, y); }
+                
                 statue.draw(g2);
                 particularObjectManager.draw(g2);
             }

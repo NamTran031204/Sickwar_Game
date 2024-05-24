@@ -49,11 +49,7 @@ public abstract class Human extends ParticularObject{
     @Override
     public void Update() {
         super.Update();
-        Statue statue = getGameWorld().statue;
-        if (isCollidingWithStatue(statue)) {
-            setAction(ATTACKING);
-            setSpeedX(0);
-           }
+
         if(getState()==ALIVE){  
         if(action==ATTACKING){ 
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
