@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
@@ -28,6 +29,7 @@ public class Audio {
 		audioURL[7] = getClass().getResource("/Sound/WAKANDA FOREVER.wav");
 		
 	}
+	
 	
 	public void setFile(int i) {
 		try {
@@ -76,4 +78,5 @@ public class Audio {
 		}
 		fc.setValue(volume);
 	}
+	
 }

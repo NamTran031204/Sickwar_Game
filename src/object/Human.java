@@ -28,7 +28,7 @@ public abstract class Human extends ParticularObject{
         if(addressX==290) {
             setWidth(width+20);
         }
-        if(addressX==280){
+        if(addressX==280) {
             setWidth(width+40);
         }
         if(addressX==270){

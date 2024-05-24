@@ -15,6 +15,7 @@ public class Miner extends Human {
     public Animation move;
     public Animation attack,attackBack;
     public Animation curAnimation;
+    public int count;
     public Miner( int team,float goldPosX,float goldPosY,GameWorld gameWorld) {
         super(0, goldPosY,72 , 72, 500, team, 0, 120, gameWorld);
         setSpeedX(1f);
@@ -37,7 +38,16 @@ public class Miner extends Human {
         else{
             setPosX(goldPosX-20);
             curAnimation=attack;
+//            count++;
             attack.update(System.nanoTime());
+//            if(count == 220) {
+//            	gameWorld.playSoundEffect(4);
+//            }
+            if(this.curTime==0) this.curTime=System.currentTimeMillis();
+            if(System.currentTimeMillis()-this.curTime>=2220) {
+            	gameWorld.playSoundEffect(4);
+            	this.curTime=System.currentTimeMillis();
+            }
             changeGold(gold, curTime);
         }
     }
@@ -45,8 +55,11 @@ public class Miner extends Human {
     }
     public void changeGold(int gold,long curTime){
         if(this.curTime==0) this.curTime=System.currentTimeMillis();
-        if(System.currentTimeMillis()-this.curTime>=8000) {getGameWorld().gold=getGameWorld().gold+gold;
+        if(System.currentTimeMillis()-this.curTime>=8000) {
+        	getGameWorld().gold=getGameWorld().gold+gold;
             this.curTime=System.currentTimeMillis();
+            
+            
         }
     }
     @Override

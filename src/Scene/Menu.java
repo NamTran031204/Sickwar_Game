@@ -25,7 +25,7 @@ public class Menu extends gameScene implements screenMethod{
 	public Menu(Window wd, GamePanel gp) {
 		super(wd, gp);
 		random = new Random();
-//		importImg();
+		importImg();
 		initButton();
 		gp.playMusic(0);
 	}
@@ -40,11 +40,21 @@ public class Menu extends gameScene implements screenMethod{
 		
 	}
 	
-	
+	private void importImg() {
+		InputStream is = getClass().getResourceAsStream("/resource/STICKWAR_main_menu_less10%.png");
+		try {
+			img = ImageIO.read(is);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
 
 	@Override
 	public void render(Graphics g) {
-		
+		g.drawImage(img, 0, 0,null);
 		drawButton(g);
 		
 	}

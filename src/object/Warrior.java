@@ -16,6 +16,8 @@ public class Warrior extends Human {
     private Animation WarriorRun , WarriorRunBack;
     private Animation WarriorAttack , WarriorAttackBack;
     private Animation curAnimation , WarriorPause;
+	private int count;
+
     
    
 
@@ -60,8 +62,12 @@ public class Warrior extends Human {
             }
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null&&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==LEFT_DIR){
               curAnimation = WarriorAttack;
+              count++;
               WarriorAttack.update(System.nanoTime());
-          
+              if(count == 100) {
+            	  gameWorld.playSoundEffect(6);
+            	  count = 0;
+              }
             }
             WarriorRun.reset();
             WarriorRunBack.reset();

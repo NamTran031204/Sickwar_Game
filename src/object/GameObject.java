@@ -6,7 +6,7 @@ public abstract class GameObject {
     private float posX;
     private float posY;
     //BufferedImage image;
-    private GameWorld gameWorld;
+    public GameWorld gameWorld;
     
     public GameObject(float x, float y ,GameWorld gameWorld) {
         posX = x;

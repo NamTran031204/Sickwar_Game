@@ -72,11 +72,8 @@ public class GamePanel extends JPanel{
 	public void stopMusic() {
 		audio.stop();
 	}
+
 	
-	public void playSoundEffect(int i) {
-		se.setFile(i);
-		se.playAudio();
-	}
 	
 	
 

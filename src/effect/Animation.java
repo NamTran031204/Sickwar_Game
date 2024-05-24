@@ -11,6 +11,7 @@ public class Animation {
     double delayTime;
     double beginTime=0;
     boolean repeated;
+    public int count;
     ArrayList<BufferedImage> frameImage;
     public Animation(){
         
@@ -42,6 +43,7 @@ public void update(long curTime){
         if(curTime-beginTime>=delayTime) {
             curIndex=(curIndex+1)%frameImage.size();
             beginTime=curTime;
+            
         }
         
     }}
@@ -51,6 +53,7 @@ public void update(long curTime){
     {
         if(curTime-beginTime>=delayTime) {
             if(curIndex<frameImage.size()){
+            
             curIndex=curIndex+1;
             beginTime=curTime;}
             else {

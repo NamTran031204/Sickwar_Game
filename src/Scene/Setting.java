@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import Button.button;
 import main.Window;
+import state.GameWorld;
 import main.GamePanel;
 
 
@@ -20,8 +21,6 @@ public class Setting extends gameScene implements screenMethod{
 	button Menu, Quit, Return, Plus, Minus, Plus1, Minus1;
 	Font setFont = new Font("Arial", Font.BOLD, 20);
 	public static int Status;
-	
-	
 	public Setting(Window wd, GamePanel gp) {
 		super(wd, gp);
 		initButton();
@@ -145,17 +144,17 @@ public class Setting extends gameScene implements screenMethod{
 		}
 		
 		if(Plus1.getOutline().contains(x, y)) {
-			if(gp.se.volumeScale < 100) {
-				gp.se.volumeScale += 10;
+			if(wd.getPlaying().gameWorld.se.volumeScale < 100) {
+				wd.getPlaying().gameWorld.se.volumeScale += 20;
 			}
-			gp.se.checkVolume();
+			wd.getPlaying().gameWorld.se.checkVolume();
 			
 		}
 		if(Minus1.getOutline().contains(x, y)) {
-			if(gp.se.volumeScale > 0) {
-				gp.se.volumeScale -= 10;
+			if(wd.getPlaying().gameWorld.se.volumeScale > 0) {
+				wd.getPlaying().gameWorld.se.volumeScale -= 20;
 			}
-			gp.se.checkVolume();
+			wd.getPlaying().gameWorld.se.checkVolume();
 			
 		}
 		if(Menu.getOutline().contains(x, y)) {

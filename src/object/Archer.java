@@ -1,3 +1,4 @@
+
 package object;
 
 import state.GameWorld;
@@ -63,7 +64,7 @@ public class Archer extends Human {
                 if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null &&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
                 curAnimation = ArcherAttackBack;
                 ArcherAttackBack.update(System.nanoTime());
-
+                
                 arrow.setSpeedX(-3);
                 
                 }

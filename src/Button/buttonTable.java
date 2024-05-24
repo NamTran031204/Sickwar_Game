@@ -47,7 +47,7 @@ public class buttonTable {
 	public void initButton() {
 		archer = new button(655, 10 , 80, 80, aImg, 100);
 		warrior = new button(785, 10 , 80, 80, wImg, 100);
-		digger = new button(915, 10 , 80, 80, dImg, 50);
+		digger = new button(915, 10 , 80, 80, dImg, 150);
 		defend = new button(717, 110, 80, 80, defImg);
 		attack = new button(849, 110, 80, 80, atkImg);
 

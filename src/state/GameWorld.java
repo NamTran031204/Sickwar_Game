@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 
 import Scene.Playing;
+import main.Audio;
 import object.Archer;
 import object.ArrowManager;
 import object.Giant;
@@ -32,7 +33,7 @@ public class GameWorld {
     public final static int DEFEND = 1;
     public final static int WIN = 2;
     public final static int GAMEOVER = 3;
-
+    public Audio se = new Audio();
     public int state = DEFEND;
     public BufferedImage bg, bufImage;
     public ParticularObjectManager particularObjectManager;
@@ -183,4 +184,11 @@ public class GameWorld {
             Thread.currentThread().interrupt();
         }
     }
+    
+    public void playSoundEffect(int i) {
+    	se.setFile(i);
+    	se.playAudio();
+	}
+
+	
 }

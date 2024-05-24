@@ -45,7 +45,9 @@ public class Playing extends gameScene implements screenMethod{
 		drawButton(g);
 		buttontable.draw(g);
 		wd.ui.draw(g);
-		
+		if(gameWorld.state == gameWorld.GAMEOVER) {
+			wd.ui.gameLose(g);
+		}	
 	}
 	
 	
