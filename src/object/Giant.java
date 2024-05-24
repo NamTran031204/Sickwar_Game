@@ -71,8 +71,10 @@ public class Giant extends Human {
                 moveBack.update(System.nanoTime());
                 
             }
-           // attack.reset();
-            //attackBack.reset();  
+            if(attack!=null&&attackBack!=null){
+            attack.reset();
+            attackBack.reset(); 
+         }
         }
         if(getAction()==PAUSE){
             if(curAnimation.isLastFrame()) {

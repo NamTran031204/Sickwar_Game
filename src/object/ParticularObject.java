@@ -60,6 +60,7 @@ public abstract class ParticularObject extends GameObject {
                     //if(object.getDamage() > 0) {
 
                         object.beHurt(getDamage());
+                        if(object.getBlood()<=0) object.setState(BEHURT);
                         if(this.getBlood()<=0) state = BEHURT;
                     //}
 
@@ -70,6 +71,7 @@ public abstract class ParticularObject extends GameObject {
                 die.update(System.nanoTime());
                 if(die.isLastFrame()==true) state = DEATH;
             }
+            else state=DEATH;
                 break;
             case DEATH:
                 

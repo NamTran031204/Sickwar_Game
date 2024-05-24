@@ -20,7 +20,7 @@ public class Warrior extends Human {
    
 
     public Warrior(float x , float y ,int team, GameWorld gameWorld) {
-        super(x, y, 70, 100, 100, team, 50, 500, gameWorld);
+        super(x, y, 70, 100, 500, team, 3, 500, gameWorld);
 
         setTeamType(TEAM1);
 
@@ -78,9 +78,10 @@ public class Warrior extends Human {
                 WarriorRunBack.update(System.nanoTime());
                 
             }
+            if(WarriorAttack!=null&&WarriorAttackBack!=null){
             WarriorAttack.reset();
             WarriorAttackBack.reset();
-            //System.out.println(getPosX());
+            }
              
         }
         if(getAction() == PAUSE) {

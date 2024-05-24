@@ -14,7 +14,7 @@ public abstract class Human extends ParticularObject{
  
     private int cost;
     public float addressX=150;
-    
+    int[] addressXs= {300, 290, 280, 270, 260};
 
 
     public Human(float x, float y, float width, float height, int blood, int team,int damage,int cost,GameWorld gameWorld) {
@@ -22,7 +22,24 @@ public abstract class Human extends ParticularObject{
         setCost(cost);
         setState(ALIVE);
         Random random=new Random();
-        addressX=random.nextInt((300 - 100) + 1)+100;
+        int randomIndex = random.nextInt(addressXs.length);
+        addressX=addressXs[randomIndex];
+        if(team==1){
+        if(addressX==290) {
+            setWidth(width+20);
+        }
+        if(addressX==280){
+            setWidth(width+40);
+        }
+        if(addressX==270){
+            setWidth(width+60);
+
+        }
+        if(addressX==260)
+        setWidth(width+80);
+
+    }
+
     }
     
     public void superUpdate(){
@@ -57,45 +74,63 @@ public abstract class Human extends ParticularObject{
             else {
                 if(getTeamType()==TEAM1){
                 if(getGameWorld().state==GameWorld.ATTACK)   {
-                
+                    if(getPosX()<addressX+800){
                     setDirection(RIGHT_DIR);
                     if(getPosX()+getSpeedX()*getDirection()<addressX+800){
                         setPosX(getPosX()+getSpeedX()*getDirection());
                         action=MOVING;
                     }
-                    else{
+                    else {
+                        setPosX(addressX+800);
+                        action=PAUSE;
+                    }
+                }
+                    if(getPosX()>addressX+800) {
+                        setDirection(LEFT_DIR);
                         if(getPosX()+getSpeedX()*getDirection()>addressX+800){
-                            setDirection(LEFT_DIR);
                             setPosX(getPosX()+getSpeedX()*getDirection());
                         }
                         else
                        { setPosX(addressX+800);
                         setDirection(RIGHT_DIR);
                         action=PAUSE;}
-                       
-                        
                     }
+                    if(getPosX()==addressX+800){
+                        setDirection(RIGHT_DIR);
+                        action =PAUSE;
+                    }
+                        
+                    
+                
                 }
             
                 else if(getGameWorld().state==GameWorld.DEFEND){
-                    if(getPosX()+getSpeedX()*getDirection()>addressX){
-                    setPosX(getPosX()+getSpeedX()*getDirection());
-                    setDirection(LEFT_DIR);
-                        action=MOVING;
-                    }
-                    else{
-                        
+                    if(getPosX()<addressX){
+                        setDirection(RIGHT_DIR);
                         if(getPosX()+getSpeedX()*getDirection()<addressX){
-                            setDirection(RIGHT_DIR);
-                        setPosX(getPosX()+getSpeedX()*getDirection());
-                    }
-
-                        else {setPosX(addressX);
-                            setDirection(RIGHT_DIR);
+                            setPosX(getPosX()+getSpeedX()*getDirection());
+                            action=MOVING;
+                        }
+                        else {
+                            setPosX(addressX);
                             action=PAUSE;
                         }
-                        
                     }
+                        if(getPosX()>addressX) {
+                            setDirection(LEFT_DIR);
+                            if(getPosX()+getSpeedX()*getDirection()>addressX){
+                                setPosX(getPosX()+getSpeedX()*getDirection());
+                            }
+                            else
+                           { setPosX(addressX);
+                            setDirection(RIGHT_DIR);
+                            action=PAUSE;}
+                        }
+                        if(getPosX()==addressX+800){
+                            setDirection(RIGHT_DIR);
+                            action =PAUSE;
+                        }
+                            
                 }
                 }
                 if(getTeamType()==TEAM2){
@@ -113,7 +148,7 @@ public abstract class Human extends ParticularObject{
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null){
                 action=ATTACKING;
                 }
-                if(getTeamType()==TEAM1){
+            if(getTeamType()==TEAM1){
             if(getGameWorld().state==GameWorld.ATTACK&&getPosX()<addressX+800){
                 action=MOVING;
             }

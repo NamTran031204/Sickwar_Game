@@ -40,7 +40,7 @@ public class GameWorld {
     Playing playing;
     Giant giant1;
 
-    public int gold = 500;
+    public int gold = 5000;
     public int numHuman = 2;
     public long startTime = 0;
     Timer timer;
@@ -115,17 +115,21 @@ public class GameWorld {
             switch (type) {
                 case 0:
                 	Archer archer = new Archer(0, lineYPositions[i % 4], 1, gameWorld );
+                    i++;
                     break;
+                    
                 case 1:
                     Warrior warrior = new Warrior(0, lineYPositions[i % 4], 1, gameWorld);
                     // particularObjectManager.addObject(giant);
+                    i++;
                     break;
+                    
                 case 2:
                     Miner miner = new Miner(1, 200, lineYPositions[i % 4], gameWorld);
                     // particularObjectManager.addObject(miner);
                     break;
             }
-            i++;
+            
         });
     }
 
