@@ -28,7 +28,7 @@ public class Statue {
 		this.health = maxHealth; // Khởi tạo máu ban đầu bằng máu tối đa
 		
 		try {
-            image = ImageIO.read(new File("src/resource/statue/statue.png")); 
+            image = ImageIO.read(new File("src/resource/statue/statue_.png")); 
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,8 +42,8 @@ public class Statue {
 		
 		// Vẽ thanh máu
 		g2.setColor(Color.RED);
-		int healthBarWidth = (int) (width * ((float) health / maxHealth)); 
-		g2.fillRect((int) posX, (int) posY - 20, healthBarWidth, 10); 
+		int healthBarWidth = (int) (width * 0.6 * ((float) health / maxHealth)); 
+		g2.fillRect((int) posX + 50, (int) posY - 20, healthBarWidth, 10); 
 		
 	}
 	
