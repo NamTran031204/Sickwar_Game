@@ -38,11 +38,11 @@ public class Miner extends Human {
         else{
             setPosX(goldPosX-20);
             curAnimation=attack;
-//            count++;
+            count++;
             attack.update(System.nanoTime());
-//            if(count == 220) {
-//            	gameWorld.playSoundEffect(4);
-//            }
+            if(count == 220) {
+            	gameWorld.playSoundEffect(4);
+            }
             if(this.curTime==0) this.curTime=System.currentTimeMillis();
             if(System.currentTimeMillis()-this.curTime>=2220) {
             	gameWorld.playSoundEffect(4);

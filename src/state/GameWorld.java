@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -48,7 +49,7 @@ public class GameWorld {
     public ArrowManager arrowManager;
     private final int[] lineYPositions = new int[4];
     private final ExecutorService executorService;
-
+    private ScheduledExecutorService scheduler;//
     public int NumofGiants = 0;
     public GameWorld(Playing playing) {
         try {
@@ -68,9 +69,20 @@ public class GameWorld {
         timer = new Timer();
         long lastTime = System.currentTimeMillis();
         executorService = Executors.newCachedThreadPool(); 
+        scheduler = Executors.newScheduledThreadPool(1);//
        initEnemy(this);
     }
 
+    //
+    public void scheduleWinStateChange() {
+        scheduler.schedule(new Runnable() {
+            @Override
+            public void run() {
+                state = WIN;
+            }
+        }, 3, TimeUnit.SECONDS);
+    }
+    
     public void setState(int newState) {
         state = newState;
     }
@@ -143,7 +155,7 @@ public class GameWorld {
             @Override
             public void run() {
                 
-                    Giant entity = new Giant(SCREEN_WIDTH_MAX, 480, 2, gameWorld);
+                    Giant entity = new Giant(SCREEN_WIDTH_MAX, 480, 2, gameWorld,1);
                     // particularObjectManager.addObject(entity);
                 
        
@@ -153,7 +165,7 @@ public class GameWorld {
             @Override
             public void run() {
                
-                    Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld);
+                    Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,2);
                     // particularObjectManager.addObject(entity);
                     entity1.setBlood(3500);
               
@@ -164,7 +176,7 @@ public class GameWorld {
             @Override
             public void run() {
                
-                    Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld);
+                    Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,3);
                     // particularObjectManager.addObject(entity);
                     entity2.setBlood(4000);
               

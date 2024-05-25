@@ -48,6 +48,9 @@ public class Playing extends gameScene implements screenMethod{
 		if(gameWorld.state == gameWorld.GAMEOVER) {
 			wd.ui.gameLose(g);
 		}	
+		if(gameWorld.state == gameWorld.WIN) {
+			wd.ui.gameWin(g);
+		}
 	}
 	
 	

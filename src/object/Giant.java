@@ -17,9 +17,12 @@ public class Giant extends Human {
     public Animation pause;
     public Animation attackBack;
     public Animation curAnimation;
+	private int count;
+    private int id;//
     // can animation die ke thua
-    public Giant(float x, float y,int team,GameWorld gameWorld) {
+    public Giant(float x, float y,int team,GameWorld gameWorld, int id) {
         super(x,y,150,400,3000,team,5,1500,gameWorld); 
+        this.id = id;//
         moveBack = Loader.getInstanceLoader().getAnimation("GiantMove");
         move = Loader.getInstanceLoader().getAnimation("GiantMove");
         move.flipAll();
@@ -41,9 +44,13 @@ public class Giant extends Human {
         curAnimation.draw(getPosX(), getPosY(), g2);
         }
     }
-
+    //
+    public int getId() {
+        return id;
+    }
+    
     public void Update(){
-        super.Update();
+    	super.Update();
         Statue statue = getGameWorld().statue;
         if (isCollidingWithStatue(statue)) {
             setAction(ATTACKING);
@@ -51,16 +58,29 @@ public class Giant extends Human {
             curAnimation = (getDirection() == RIGHT_DIR) ? attack : attackBack;
             curAnimation.update(System.nanoTime());
            }
+        
+        if (getBlood() <= 0 && getId() == 3) {
+            getGameWorld().scheduleWinStateChange();
+        }
+        
         if(getAction()==ATTACKING){
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null &&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==RIGHT_DIR){
              curAnimation=attackBack;
+            // count++;
              attackBack.update(System.nanoTime());
-           
+            // if(count == 100) {
+           	//  gameWorld.playSoundEffect(5);
+           	// count = 0;
+            // }
             }
             if(getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this)!=null&&getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this).getDirection()==LEFT_DIR){
               curAnimation=attack;
+              count++;
               attack.update(System.nanoTime());
-          
+              if(count == 200) {
+            	  gameWorld.playSoundEffect(5);
+            	  count = 0;
+              }
             }
             move.reset();
             moveBack.reset();
@@ -96,6 +116,7 @@ public class Giant extends Human {
                 curAnimation.update(System.nanoTime());
             }
         }
+        
     }
 
     @Override
