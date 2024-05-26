@@ -14,7 +14,7 @@ public class Arrow extends ParticularObject {
 
     public Arrow(float x , float y , GameWorld gameWorld) {
 
-        super(x, y, 60, 30, 1,1,30, gameWorld);
+        super(x, y, 60, 30, 1,1,5, gameWorld);
         forwardArrow = Loader.getInstanceLoader().getAnimation("ForwardArrow");
         
     }

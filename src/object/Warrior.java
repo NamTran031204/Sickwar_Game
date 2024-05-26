@@ -22,7 +22,7 @@ public class Warrior extends Human {
    
 
     public Warrior(float x , float y ,int team, GameWorld gameWorld) {
-        super(x, y, 70, 100, 500, team, 3, 500, gameWorld);
+        super(x, y, 70, 100, 800, team, 2, 500, gameWorld);
 
         setTeamType(TEAM1);
 

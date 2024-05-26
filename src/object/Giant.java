@@ -21,7 +21,7 @@ public class Giant extends Human {
     private int id;//
     // can animation die ke thua
     public Giant(float x, float y,int team,GameWorld gameWorld, int id) {
-        super(x,y,150,400,3000,team,5,1500,gameWorld); 
+        super(x,y,150,400,4000,team,1,1500,gameWorld); 
         this.id = id;//
         moveBack = Loader.getInstanceLoader().getAnimation("GiantMove");
         move = Loader.getInstanceLoader().getAnimation("GiantMove");

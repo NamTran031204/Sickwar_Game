@@ -19,7 +19,7 @@ public class Archer extends Human {
     private long lastShootingTime;
         
     public Archer (float x , float y ,int team, GameWorld gameWorld) {
-        super(x, y, 70, 100, 500, team, 10, 500, gameWorld);
+        super(x, y, 70, 100, 100, team, 5, 500, gameWorld);
 
         setTeamType(TEAM1);
 

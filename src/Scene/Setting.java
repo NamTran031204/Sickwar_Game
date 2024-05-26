@@ -1,12 +1,16 @@
 package Scene;
 
-import static main.gameStatus.SETTING;
-import static main.gameStatus.setGameStatus;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import Button.button;
@@ -48,7 +52,7 @@ public class Setting extends gameScene implements screenMethod{
 	}
 	
 	public void initButton() {
-		Menu = new button(670, 620, 150, 50, "Menu");
+		Menu = new button(670, 620, 150, 50, "Tutorial");
 		Quit = new button(955, 620, 150, 50, "Quit");
 		Return = new button(400, 620, 150, 50, "Return");
 		Plus = new button(1054, 158, 50, 50, "+");
@@ -159,17 +163,23 @@ public class Setting extends gameScene implements screenMethod{
 		}
 		if(Menu.getOutline().contains(x, y)) {
 			setGameStatus(MENU);
-			gp.stopMusic();
+			/*gp.stopMusic();
 			gp.audio.checkVolume();
-			gp.playMusic(0);
+			gp.playMusic(0);*/
+
+			JFrame frame = new JFrame("Tutorial Pop-up");
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			frame.setSize(1600, 900);
+			frame.setLocationRelativeTo(null);
+			ImageIcon imageIcon = new ImageIcon("src/resource/tutorial.png");
+
+			JLabel label = new JLabel(imageIcon);
+			frame.add(label);
+			frame.pack();
+			frame.setVisible(true);
 			
 		}
-		if(Quit.getOutline().contains(x, y)) {
-			int result = JOptionPane.showConfirmDialog(null, "Quitting?", null, JOptionPane.YES_NO_OPTION);
-			if(result == JOptionPane.YES_OPTION) {
-				System.exit(0);
-			}
-		}
+		
 		
 		if(Return.getOutline().contains(x, y)) {
 			if(Status == 1) {

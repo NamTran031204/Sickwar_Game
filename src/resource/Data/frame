@@ -41,9 +41,9 @@ src/resource/warrior/run/WarriorRun_6.png
 WarriorPause
 true
 166666666
-src/resource/warrior/run/WarriorRun_1.png
-src/resource/warrior/run/WarriorRun_1.png
-src/resource/warrior/run/WarriorRun_1.png
+src/resource/warrior/Sword_stand.png
+src/resource/warrior/Sword_stand.png
+src/resource/warrior/Sword_stand.png
 
 WarriorAttack
 true
@@ -104,9 +104,9 @@ src/resource/archer/run/ArcherRun_10.png
 ArcherPause
 true
 166666666
-src/resource/archer/run/ArcherRun_1.png
-src/resource/archer/run/ArcherRun_1.png
-src/resource/archer/run/ArcherRun_1.png
+src/resource/archer/Archer_stand.png
+src/resource/archer/Archer_stand.png
+src/resource/archer/Archer_stand.png
 
 ArcherAttack
 true

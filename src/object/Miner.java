@@ -8,7 +8,7 @@ import effect.Loader;
 import state.GameWorld;
 
 public class Miner extends Human {
-    int gold=100;// sau 1 khoang tgian thi dc bn vang
+    int gold=5;// sau 1 khoang tgian thi dc bn vang
     float goldPosX;
     float goldPosY;
     long curTime=0;
@@ -55,7 +55,7 @@ public class Miner extends Human {
     }
     public void changeGold(int gold,long curTime){
         if(this.curTime==0) this.curTime=System.currentTimeMillis();
-        if(System.currentTimeMillis()-this.curTime>=8000) {
+        if(System.currentTimeMillis()-this.curTime>=2000) {
         	getGameWorld().gold=getGameWorld().gold+gold;
             this.curTime=System.currentTimeMillis();
             

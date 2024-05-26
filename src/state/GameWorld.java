@@ -42,7 +42,7 @@ public class GameWorld {
     Playing playing;
     Giant giant1;
 
-    public int gold = 5000;
+    public int gold = 250;
     public int numHuman = 2;
     public long startTime = 0;
     Timer timer;
@@ -160,17 +160,17 @@ public class GameWorld {
                 
        
             }
-        }, 5000);
+        }, 60000);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                
                     Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,2);
                     // particularObjectManager.addObject(entity);
-                    entity1.setBlood(3500);
+                    entity1.setBlood(20000);
               
             }
-        }, 10000);
+        }, 150000);
 
         timer.schedule(new TimerTask() {
             @Override
@@ -178,10 +178,10 @@ public class GameWorld {
                
                     Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,3);
                     // particularObjectManager.addObject(entity);
-                    entity2.setBlood(4000);
+                    entity2.setBlood(40000);
               
             }
-        }, 15000);
+        }, 300000);
 
 
     }
