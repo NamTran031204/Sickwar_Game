@@ -151,35 +151,29 @@ public class GameWorld {
     int j = 0;
 
     public void initEnemy(GameWorld gameWorld) {
+        
+        
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                
-                    Giant entity = new Giant(SCREEN_WIDTH_MAX, 480, 2, gameWorld,1);
-                    // particularObjectManager.addObject(entity);
-                
-       
+                Giant entity = new Giant(SCREEN_WIDTH_MAX, 480, 2, gameWorld, 1);
+                // particularObjectManager.addObject(entity);
             }
         }, 60000);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-               
-                    Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,2);
-                    // particularObjectManager.addObject(entity);
-                    entity1.setBlood(20000);
-              
+                Giant entity1 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld, 2);
+                // particularObjectManager.addObject(entity);
+                entity1.setBlood(20000);
             }
         }, 150000);
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-               
-                    Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld,3);
-                    // particularObjectManager.addObject(entity);
-                    entity2.setBlood(40000);
-              
+                Giant entity2 = new Giant(SCREEN_WIDTH_MAX, 480 + 10, 2, gameWorld, 3);
+                // particularObjectManager.addObject(entity);
+                entity2.setBlood(40000);
             }
         }, 300000);
 

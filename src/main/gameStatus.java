@@ -1,5 +1,6 @@
 package main;
 
+
 public enum gameStatus {
 	PLAYING,
 	MENU,
